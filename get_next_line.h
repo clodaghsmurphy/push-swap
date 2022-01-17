@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 13:11:39 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/17 17:21:16 by clmurphy         ###   ########.fr       */
+/*   Created: 2021/12/02 15:26:23 by clmurphy          #+#    #+#             */
+/*   Updated: 2021/12/13 16:36:07 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	main(int ac, char **av)
-{
-	unsigned int	i;
-	t_list			*a;
-	t_list			*b;
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
 
-	a = NULL;
-	i = 1;
-	if (ac < 2)
-	{
-		write(1, "Please enter list to be sorted\n", 31);
-		return (0);
-	}
-	while(av[i])
-	{
-		ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i])));
-		i++;
-	}
-	take_op(a, b);
-}
+char	*get_next_line(int fd);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_strchr(char *s, int c);
+size_t	ft_strlen(const char	*s);
+
+#endif

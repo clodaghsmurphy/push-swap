@@ -6,7 +6,7 @@
 /*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:29 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/17 13:11:33 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/17 13:48:43 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_list  *ft_lstnew(int	value)
 void    ft_lstadd_back(t_list **alst, t_list *new)
 {
         t_list  *last;
-		t_list	*temp;
 
         last = *alst;
         if (*alst == NULL)
@@ -66,7 +65,12 @@ void    ft_lstadd_back(t_list **alst, t_list *new)
         }
         while (last ->next != NULL)
 			last = last ->next;
-		temp = last;
 		last ->next = new;
-		last ->prev = temp;
+		new ->prev = last;
+}
+
+void	ft_lstadd_front(t_list **alst, t_list *new)
+{
+	new -> next = (*alst);
+	*(alst) = new;
 }
