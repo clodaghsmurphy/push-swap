@@ -28,7 +28,7 @@ void    take_op(t_list *a, t_list *b);
 void    ft_lstadd_front(t_list **alst, t_list *new);
 int     ft_atoi(const char *str);
 void	swap(t_list	*list);
-void	push(t_list	*a, t_list *b);
+void	push(t_list	**a, t_list **b);
 void	rotate(t_list	**list);
 void	reverse_rotate(t_list	**list);
 t_list	*ft_lstnew(int value);

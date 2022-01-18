@@ -29,9 +29,9 @@ void    take_op(t_list *a, t_list *b)
             swap(b);
         }
         else if (!ft_strncmp(str, "pa\n", 100))
-            push(b, a);
+            push(&b, &a);
         else if (!ft_strncmp(str, "pb\n", 100))
-            push(a, b);
+            push(&a, &b);
         else if (!ft_strncmp(str, "ra\n", 100))
             rotate(&a);
         else if (!ft_strncmp(str, "rb\n", 100))

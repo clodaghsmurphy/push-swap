@@ -21,10 +21,16 @@ void	swap(t_list	*list)
 	list->next->value = temp;
 }
 
-void	push(t_list	*a, t_list *b)
+void	push(t_list	**a, t_list **b)
 {
-	ft_lstadd_front(&b, ft_lstnew(a->value));
-	a = a->prev;
+	t_list	*temp;
+	if (a == NULL)
+		return; 
+	ft_lstadd_front(b, ft_lstnew((*a)->value));
+	temp = (*a)->next;
+	(*a) = temp;
+	(*a)->prev = NULL;
+	
 }
 
 void	rotate(t_list	**list)
