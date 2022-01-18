@@ -6,7 +6,7 @@
 /*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/17 17:27:20 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:33:09 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct	s_list
 	struct	s_list	*prev;
 }	t_list;
 
+int		isnum(char	*str);
+int		check_dub(t_list *list);
+void    ft_lstclear(t_list **lst);
+int		ft_isdigit(int c);
 void    take_op(t_list *a, t_list *b);
 void    ft_lstadd_front(t_list **alst, t_list *new);
 int     ft_atoi(const char *str);

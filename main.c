@@ -6,7 +6,7 @@
 /*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:39 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/17 17:21:16 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:40:59 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int ac, char **av)
 	t_list			*b;
 
 	a = NULL;
+	b = NULL;
 	i = 1;
 	if (ac < 2)
 	{
@@ -27,8 +28,20 @@ int	main(int ac, char **av)
 	}
 	while(av[i])
 	{
-		ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i])));
-		i++;
+		if(isnum(av[i]))
+		{
+			ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i])));
+			i++;
+		}
+		else
+		{
+			ft_lstclear(&a);
+			write(1, "only numbers plz..\n", 19);
+			return (0);
+		}
 	}
-	take_op(a, b);
+	if (check_dub(a))
+		take_op(a, b);
+	else
+		write(1, "no doubles please..\n", 20);
 }

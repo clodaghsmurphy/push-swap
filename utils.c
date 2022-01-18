@@ -6,7 +6,7 @@
 /*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:12:07 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/17 13:12:08 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:11:50 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ int     ft_atoi(const char *str)
         return (sign * res);
 }
 
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
 int     ft_strncmp(const char   *s1, const char *s2, size_t n)
 {
         size_t                  i;
@@ -56,3 +63,17 @@ int     ft_strncmp(const char   *s1, const char *s2, size_t n)
         }
         return (str1[i] - str2[i]);
 }
+
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*temp;
+
+	temp = *lst;
+	while (temp != NULL)
+	{
+		temp = temp ->next;
+		free(*lst);
+		*lst = temp;
+	}
+}
+

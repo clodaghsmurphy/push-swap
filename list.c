@@ -6,7 +6,7 @@
 /*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:29 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/17 13:48:43 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/18 19:49:14 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void    printlsts(t_list *a, t_list *b)
 t_list  *ft_lstnew(int	value)
 {
         t_list  *new_node;
-
+		
+		if (!value)
+			return (NULL);
         new_node = (t_list *)malloc(sizeof(*new_node));
         if (!new_node)
                 return (NULL);
@@ -71,6 +73,10 @@ void    ft_lstadd_back(t_list **alst, t_list *new)
 
 void	ft_lstadd_front(t_list **alst, t_list *new)
 {
+	if (new == NULL || !alst)
+		return ;
 	new -> next = (*alst);
+	new -> prev = NULL;
 	*(alst) = new;
+	(*alst)->prev = NULL;
 }
