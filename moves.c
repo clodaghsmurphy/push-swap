@@ -23,19 +23,17 @@ void	swap(t_list	*list)
 	list->next->value = temp;
 }
 
-void	push(t_list	**a, t_list **b)
+void	push(t_list	**from, t_list **to)
 {
 	t_list	*temp;
 
-	if ((*a) == NULL)
+	if ((*from) == NULL)
 		return;
-	ft_lstadd_front(b, ft_lstnew((*a)->value));
-	printf("test\n");
-	temp = (*a)->next;
-	printf("temp val is %d\n", temp->value);
-	(*a) = temp;
-	(*a)->prev = NULL;
-	printf("test 2\n");
+	temp = *from;
+	*from = (*from)->next;
+//	(*from)->prev = NULL;
+	temp->next = *to;
+	*to = temp;
 }
 
 void	rotate(t_list	**list)
