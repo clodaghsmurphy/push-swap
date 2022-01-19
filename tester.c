@@ -6,7 +6,7 @@
 /*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:12:01 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/18 19:31:14 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:31:41 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void    take_op(t_list *a, t_list *b)
     {
         str = get_next_line(1);
         if (!ft_strncmp(str, "sa\n", 100))
-            swap(a);
+            swap(&a);
         else if (!ft_strncmp(str, "sb\n", 100))
-            swap(b);
+            swap(&b);
         else if (!ft_strncmp(str, "ss\n", 100))
         {
-            swap(a);
-            swap(b);
+            swap(&a);
+            swap(&b);
         }
         else if (!ft_strncmp(str, "pa\n", 100))
             push(&b, &a);
@@ -65,6 +65,8 @@ void    take_op(t_list *a, t_list *b)
             printf("\nwrong command\n");
             count--;
         }
+		if (b)
+			printf("list index is %d\n", b->index);
         count++;
         printlsts(a, b);
         free(str);
