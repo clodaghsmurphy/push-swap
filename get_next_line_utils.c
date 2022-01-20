@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "get_next_line.h"
 
-char	*ft_strdup(const char	*s1)
+char *ft_strdup2(const char *s1)
 {
-	unsigned int	i;
-	char			*dup;
+	unsigned int i;
+	char *dup;
 
 	if (!s1)
 		return (NULL);
@@ -28,15 +28,15 @@ char	*ft_strdup(const char	*s1)
 		dup[i] = s1[i];
 		i++;
 		if (dup[i - 1] == '\n')
-			break ;
+			break;
 	}
 	dup[i] = '\0';
 	return (dup);
 }
 
-size_t	ft_strlen(const char	*s)
+size_t ft_strlen(const char *s)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (s[i])
@@ -44,14 +44,14 @@ size_t	ft_strlen(const char	*s)
 	return (i);
 }
 
-int	ft_strchr(char *str, int c)
+int ft_strchr(char *str, int c)
 {
-	size_t			i;
-	unsigned char	ltr;
+	size_t i;
+	unsigned char ltr;
 
 	if (!str)
 		return (0);
-	ltr = (unsigned char) c;
+	ltr = (unsigned char)c;
 	i = 0;
 	while (str[i])
 	{
@@ -62,14 +62,14 @@ int	ft_strchr(char *str, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char *ft_strjoin2(char *str1, char *str2)
 {
-	char			*str;
-	unsigned int	i;
-	unsigned int	j;
+	char *str;
+	unsigned int i;
+	unsigned int j;
 
 	if (!str1)
-		str1 = ft_strdup("\0");
+		str1 = ft_strdup2("\0");
 	if (!str2)
 		return (NULL);
 	j = 0;
@@ -83,7 +83,7 @@ char	*ft_strjoin(char *str1, char *str2)
 		i++;
 	}
 	while (str2[j] != '\0')
-	{	
+	{
 		str[i + j] = str2[j];
 		j++;
 	}

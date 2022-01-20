@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-void    take_op(t_list *a, t_list *b)
+void take_op(t_list *a, t_list *b)
 {
-    char    *str;
-    int    count = 0;
+    char *str;
+    int count = 0;
     while (1)
     {
         str = get_next_line(1);
@@ -29,9 +29,9 @@ void    take_op(t_list *a, t_list *b)
             swap(&b);
         }
         else if (!ft_strncmp(str, "pa\n", 100))
-            push(&b, &a);
+            push(&b, &a, NULL, 0);
         else if (!ft_strncmp(str, "pb\n", 100))
-            push(&a, &b);
+            push(&a, &b, NULL, 1);
         else if (!ft_strncmp(str, "ra\n", 100))
             rotate(&a);
         else if (!ft_strncmp(str, "rb\n", 100))
@@ -50,7 +50,7 @@ void    take_op(t_list *a, t_list *b)
             reverse_rotate(&a);
             reverse_rotate(&b);
         }
-       /* else if (!ft_strncmp(str, "minpos\n", 100))
+        /* else if (!ft_strncmp(str, "minpos\n", 100))
         {
             printf("\nle min est en %d position\n", find_minpos(a));
         }
@@ -65,45 +65,44 @@ void    take_op(t_list *a, t_list *b)
             printf("\nwrong command\n");
             count--;
         }
-		print_index(&b);
+        print_index(&b);
         count++;
         printlsts(a, b);
         free(str);
-		if (check_sort(&a, &b))
-		{
-			printf("\n\n\n**You won, your score is %d***\n\n\n", count);
-			break;
-		}
+        if (check_sort(&a, &b))
+        {
+            printf("\n\n\n**You won, your score is %d***\n\n\n", count);
+            break;
+        }
     }
 }
 
-void	print_index(t_list **list)
+void print_index(t_list **list)
 {
-	t_list	*temp;
-	int		i;
+    t_list *temp;
+    int i;
 
-	i = 1;
-	temp = *list;
-	while(temp)
-	{
-		temp = temp->next;
-		i++;
-	}
+    i = 1;
+    temp = *list;
+    while (temp)
+    {
+        temp = temp->next;
+        i++;
+    }
 }
 
-int	check_sort(t_list **a, t_list **b)
+int check_sort(t_list **a, t_list **b)
 {
-	t_list	*temp;
+    t_list *temp;
 
-	temp = *a;
-	if ((*b) != NULL)
-		return (0);
-	while (temp->next != NULL)
-	{
-		if (temp->value >= temp->next->value)
-			return (0);
-		temp = temp->next;
-	}
-	return (1);
+    temp = *a;
+    if ((*b) != NULL)
+        return (0);
+    while (temp->next != NULL)
+    {
+        if (temp->value >= temp->next->value)
+            return (0);
+        temp = temp->next;
+    }
+    return (1);
 }
-

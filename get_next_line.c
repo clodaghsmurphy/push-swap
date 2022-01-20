@@ -9,13 +9,13 @@
 /*   Updated: 2022/01/17 17:29:27 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"get_next_line.h"
-# define BUFFER_SIZE 42
-static char	*next_line(char	*save)
+#include "get_next_line.h"
+#define BUFFER_SIZE 42
+static char *next_line(char *save)
 {
-	unsigned int	i;
-	unsigned int	j;
-	char			*res;
+	unsigned int i;
+	unsigned int j;
+	char *res;
 
 	i = 0;
 	j = 0;
@@ -40,13 +40,13 @@ static char	*next_line(char	*save)
 	return (free(save), res);
 }
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	static char	*save = NULL;
-	char		*buf;
-	char		*res;
-	int			count;
-	
+	static char *save = NULL;
+	char *buf;
+	char *res;
+	int count;
+
 	count = 1;
 	if (BUFFER_SIZE <= 0 && fd < 0)
 		return (NULL);
@@ -57,11 +57,11 @@ char	*get_next_line(int fd)
 	{
 		count = read(fd, buf, BUFFER_SIZE);
 		if (count <= 0)
-			break ;
+			break;
 		buf[count] = '\0';
-		save = ft_strjoin(save, buf);
+		save = ft_strjoin2(save, buf);
 	}
-	res = ft_strdup(save);
+	res = ft_strdup2(save);
 	save = next_line(save);
 	return (free(buf), res);
 }

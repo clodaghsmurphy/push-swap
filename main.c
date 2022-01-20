@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	unsigned int	i;
-	t_list			*a;
-	t_list			*b;
-	static char		**res;
+	unsigned int i;
+	t_list *a;
+	t_list *b;
+	char *res;
 
-	res = NULL; 
+	res = NULL;
 	a = NULL;
 	b = NULL;
 	i = 1;
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	if (check_dub(a))
 	{
 		take_op(a, b);
-		res = pushswap(a, b);
+		res = push_swap(&a, &b);
 	}
 	else
 		write(1, "no doubles please..\n", 20);
