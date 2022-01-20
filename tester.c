@@ -6,7 +6,7 @@
 /*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:12:01 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/19 18:31:41 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/20 10:40:04 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,45 @@ void    take_op(t_list *a, t_list *b)
             printf("\nwrong command\n");
             count--;
         }
-		if (b)
-			printf("list index is %d\n", b->index);
+		print_index(&b);
         count++;
         printlsts(a, b);
         free(str);
-/*        if (check_sort(a, b))
-        {
-            printf("\n\n\n**You won, your score is %d***\n\n\n", count);
-            break;
-        }*/
+		if (check_sort(&a, &b))
+		{
+			printf("\n\n\n**You won, your score is %d***\n\n\n", count);
+			break;
+		}
     }
 }
+
+void	print_index(t_list **list)
+{
+	t_list	*temp;
+	int		i;
+
+	i = 1;
+	temp = *list;
+	while(temp)
+	{
+		temp = temp->next;
+		i++;
+	}
+}
+
+int	check_sort(t_list **a, t_list **b)
+{
+	t_list	*temp;
+
+	temp = *a;
+	if ((*b) != NULL)
+		return (0);
+	while (temp->next != NULL)
+	{
+		if (temp->value >= temp->next->value)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+

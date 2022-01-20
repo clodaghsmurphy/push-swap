@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:46 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/19 18:32:18 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/20 18:49:49 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	swap(t_list	**list)
 	t_list	*pos2;
 
 	if ((*list) == NULL || (*list)->next == NULL)
-		return;
+		return ;
 	pos1 = *list;
 	pos2 = (*list)->next;
 	pos1->next = pos2->next;
@@ -26,17 +26,20 @@ void	swap(t_list	**list)
 	(*list)->next = pos1;
 }
 
-void	push(t_list	**from, t_list **to)
+void	push(t_list	**from, t_list **to, char *res, int flag)
 {
 	t_list	*temp;
 
 	if ((*from) == NULL)
-		return;
+		return ;
 	temp = *from;
 	*from = (*from)->next;
 	temp->next = *to;
 	*to = temp;
-//	(*to)->index = 1;
+	if (flag == 0)
+		res = ft_strjoin(res, ft_strdup("pa"))
+	else if (flag == 1)
+		res = ft_strjoin(res, ft_strdup("pb"))
 	list_index(to);
 }
 

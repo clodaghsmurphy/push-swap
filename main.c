@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:39 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/19 18:23:29 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/20 18:20:34 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	unsigned int	i;
 	t_list			*a;
 	t_list			*b;
-	static char		*res;
+	static char		**res;
 
 	res = NULL; 
 	a = NULL;
@@ -28,9 +28,9 @@ int	main(int ac, char **av)
 		write(1, "Please enter list to be sorted\n", 31);
 		return (0);
 	}
-	while(av[i])
+	while (av[i])
 	{
-		if(isnum(av[i]))
+		if (isnum(av[i]))
 		{
 			ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i]), i));
 			i++;
@@ -42,9 +42,11 @@ int	main(int ac, char **av)
 			return (0);
 		}
 	}
-	printlsts(a, b);
 	if (check_dub(a))
+	{
 		take_op(a, b);
+		res = pushswap(a, b);
+	}
 	else
 		write(1, "no doubles please..\n", 20);
 }

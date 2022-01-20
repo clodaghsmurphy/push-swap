@@ -6,7 +6,7 @@
 /*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:29 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/19 18:31:14 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/20 10:08:33 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,18 @@ void    ft_lstadd_back(t_list **alst, t_list *new)
 
 void	list_index(t_list **list)
 {
-	t_list	*temp;
+	t_list			*temp;
+	unsigned int	i;
 	
+	i = 1;
 	if (*list == NULL)
 		return;
 	temp = (*list);
-	while(temp->next != NULL)
+	while(temp)
 	{
-		temp->index += 1;
+		temp->index = i;
 		temp = temp->next;
+		i++;
 	}
 }
 void	ft_lstadd_front(t_list **alst, t_list *new)
