@@ -1,51 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkargs.c                                        :+:      :+:    :+:   */
+/*   dub_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/19 13:25:43 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/21 13:04:18 by clmurphy         ###   ########.fr       */
+/*   Created: 2022/01/21 12:53:49 by clmurphy          #+#    #+#             */
+/*   Updated: 2022/01/21 13:01:54 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-int	check_dub(t_list *list)
+void	dub_reverse_rotate(t_list **a, t_list **b, int flag)
 {
-	int		count;
-	t_list	*temp;
-
-	count = 0;
-	while (list->next != NULL)
-	{
-		temp = list->next;
-		while (temp != NULL)
-		{
-			if (list->value == temp->value)
-			{
-				count++;
-				return (0);
-			}
-			temp = temp->next;
-		}
-		list = list->next;
-	}
-	return (1);
+	reverse_rotate(a, 0, flag, 1);
+	reverse_rotate(b, 1, flag, 1);
+	if (flag == 1)
+		write(1, "rrr\n", 3);
 }
 
-int	isnum(char	*str)
+void	dub_rotate(t_list **a, t_list **b, int flag)
 {
-	unsigned int	i;
-	unsigned int	j;
+	rotate(a, 0, flag, 1);
+	rotate(b, 1, flag, 1);
+	if (flag == 1)
+		write(1, "rr\n", 3);
+}
 
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+void	dub_swap(t_list **a, t_list **b, int flag)
+{
+	swap(a, 0, flag, 1);
+	swap(b, 1, flag, 1);
+	if (flag == 1)
+		write(1, "ss\n", 3);
 }

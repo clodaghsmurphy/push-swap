@@ -6,20 +6,18 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:39 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/20 18:20:34 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/21 13:00:25 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	unsigned int i;
-	t_list *a;
-	t_list *b;
-	char *res;
+	unsigned int	i;
+	t_list			*a;
+	t_list			*b;
 
-	res = NULL;
 	a = NULL;
 	b = NULL;
 	i = 1;
@@ -45,7 +43,7 @@ int main(int ac, char **av)
 	if (check_dub(a))
 	{
 		take_op(a, b);
-		res = push_swap(&a, &b);
+		push_swap(&a, &b);
 	}
 	else
 		write(1, "no doubles please..\n", 20);
