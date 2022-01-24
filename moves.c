@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:46 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/21 13:02:03 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/24 14:11:35 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	push(t_list **from, t_list **to, int flag, int ltr)
 	else if (ltr == 1 && flag == 1)
 		write(1, "pb\n", 3);
 	list_index(to);
+	list_index(from);
 }
 
 void	rotate(t_list **list, int ltr, int flag, int dub)
@@ -63,8 +64,9 @@ void	rotate(t_list **list, int ltr, int flag, int dub)
 	last->next = first;
 	if (flag == 1 && ltr == 0 && !dub)
 		write(1, "ra\n", 3);
-	if (flag == 1 && ltr == 0 && !dub)
+	if (flag == 1 && ltr == 1 && !dub)
 		write(1, "rb\n", 3);
+	list_index(list);
 }
 
 void	reverse_rotate(t_list **list, int ltr, int flag, int dub)
@@ -86,6 +88,7 @@ void	reverse_rotate(t_list **list, int ltr, int flag, int dub)
 	(*list) = last;
 	if (flag == 1 && ltr == 0 && !dub)
 		write(1, "rra\n", 3);
-	if (flag == 1 && ltr == 0 && !dub)
+	if (flag == 1 && ltr == 1 && !dub)
 		write(1, "rrb\n", 3);
+	list_index(list);
 }

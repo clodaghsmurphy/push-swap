@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:12:07 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/21 12:45:05 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/23 17:27:35 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,6 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n < 1)
-		return (0);
-	while (str1[i] != '\0' && i < n - 1)
-	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
-		i++;
-	}
-	return (str1[i] - str2[i]);
-}
-
 void	ft_lstclear(t_list **lst)
 {
 	t_list	*temp;
@@ -71,22 +55,4 @@ void	ft_lstclear(t_list **lst)
 		free(*lst);
 		*lst = temp;
 	}
-}
-
-char	*ft_strdup(const char	*s1)
-{
-	unsigned int	i;
-	char			*dup;
-
-	dup = malloc(sizeof(*dup) * (ft_strlen(s1) + 1));
-	if (dup == 0)
-		return (NULL);
-	i = 0;
-	while (s1[i] != '\0')
-	{
-		dup[i] = s1[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
 }

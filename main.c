@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:39 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/21 13:00:25 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/24 16:47:11 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,25 @@
 int	main(int ac, char **av)
 {
 	unsigned int	i;
-	t_list			*a;
-	t_list			*b;
+	int				*tab;
 
-	a = NULL;
-	b = NULL;
+	tab = malloc(sizeof(int) * (ac - 1));
+	if (!tab)
+		return (0);
 	i = 1;
 	if (ac < 2)
-	{
-		write(1, "Please enter list to be sorted\n", 31);
-		return (0);
-	}
-	while (av[i])
+		return (free(tab), 0);
+	while (i < ac)
 	{
 		if (isnum(av[i]))
 		{
-			ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i]), i));
+			tab[i - 1] = ft_atoi(av[i]);
 			i++;
 		}
 		else
-		{
-			ft_lstclear(&a);
-			write(1, "only numbers plz..\n", 19);
-			return (0);
-		}
+			return (free(tab), 0);
 	}
-	if (check_dub(a))
-	{
-		take_op(a, b);
-		push_swap(&a, &b);
-	}
-	else
-		write(1, "no doubles please..\n", 20);
+	i = 0;
+	ft_parse(tab, ac - 1);
+	free(tab);
 }

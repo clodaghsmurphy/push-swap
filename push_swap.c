@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:28:37 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/21 15:49:49 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:17:18 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 void	push_swap(t_list **a, t_list **b)
 {
-	char	*res;
-
-	res = NULL;
-	res = set_moves(a, b);
-	exec_moves(a, b, res);
+	get_cost(a, b);
+	set_moves(a, b);
 }
 
-void	exec_moves(t_list **a, t_list **b, char *res)
+void	exec_moves(t_list **a, t_list **b, char *move)
 {
 	char			**tab;
-	unsigned int	i;
+	int				i;
 
-	if (res == NULL || (*a) == NULL )
+	i = (*a)->cost;
+	printf("i in exec moves is %d\n", i);
+	if (move == NULL || (*a) == NULL )
 		return ;
-	tab = ft_split(res, '\n');
-	while (tab[i])
+	while (i > -1)
 	{
-		command(a, b, tab[i]);
-		command2(a, b, tab[i]);
-		i++;
+		command(a, b, move);
+		command2(a, b, move);
+		i--;
 	}
-	printlsts(*a, *b);
 }
 
 void	command(t_list **a, t_list **b, char *str)

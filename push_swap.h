@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/21 13:02:45 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:03:53 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ typedef struct s_list
 {
 	int				value;
 	int				index;
+	int				next_sup;
+	int				next_inf;
+	int				max;
+	int				min;
 	int				cost;
+	int				size;
 	struct s_list	*next;
 }	t_list;
 
@@ -31,15 +36,27 @@ void	ft_lstcpy(t_list **list, t_list *new);
 void	list_index(t_list **list);
 void	ft_lstclear(t_list **lst);
 void	ft_lstadd_front(t_list **alst, t_list *new);
-t_list	*ft_lstnew(int value, int index);
+t_list	*ft_lstnew(int value, int *sorted_tab, int index, int size);
 void	printlsts(t_list *a, t_list *b);
 void	ft_lstadd_back(t_list **alst, t_list *new);
+int		lst_size(t_list **a);
 /*----------------moves.c-----------*/
 void	push(t_list **a, t_list **b, int ltr, int flag);
 void	swap(t_list **list, int ltr, int flag, int dub);
 void	rotate(t_list **list, int ltr, int flag, int dub);
 void	reverse_rotate(t_list **list, int ltr, int flag, int dub);
 
+/*------------sort------------------*/
+int		ft_tablen(int *tab);
+int		get_min(int *sorted_tab);
+void	sort_tab(int *tab, int size);
+int		get_max(int *sorted_tab, int size);
+int		get_next_sup(int n, int	*tab, int size);
+int		get_next_inf(int n, int	*tab, int size);
+void	ft_parse(int *tab, int size);
+void	print_tab(int *tab, int size);
+int		*tab_cpy(int *tab, int size);
+void	print_vals(t_list *a);
 /*------------dub_moves--------------*/
 void	dub_swap(t_list **a, t_list **b, int flag);
 void	dub_rotate(t_list **list, t_list **b, int flag);
@@ -59,7 +76,7 @@ size_t	ft_strlcpy(char	*dst, const char	*src, size_t size);
 
 /*--------------push_swap.c------------*/
 void	push_swap(t_list **a, t_list **b);
-void	exec_moves(t_list **a, t_list **b, char *res);
+void	exec_moves(t_list **a, t_list **b, char *move);
 void	print_res(char *res);
 void	command(t_list **a, t_list **b, char *str);
 void	command2(t_list **a, t_list **b, char *str);
@@ -70,7 +87,12 @@ int		isnum(char *str);
 int		ft_isdigit(int c);
 
 /*--------------setmoves---------------*/
-char	*set_moves(t_list **a, t_list **b);
+void	*set_moves(t_list **a, t_list **b);
+void	moveto_b(t_list **a, t_list **b, int flag);
+void	bring_to_top(t_list **a, t_list **b);
+void	get_cost(t_list	**a, t_list **b);
+void	common_move_rrr(t_list **a, t_list **b);
+void	common_move_rr(t_list **a, t_list **b);
 /*---------------tester-----------------*/
 int		check_sort(t_list **a, t_list **b);
 void	print_index(t_list **list);
