@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:29 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/24 17:03:36 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/25 15:44:11 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_list	*ft_lstnew(int value, int *sorted_tab, int index, int size)
 	new_node->next_inf = get_next_inf(value, sorted_tab, size);
 	new_node->next_sup = get_next_sup(value, sorted_tab, size);
 	new_node->min = sorted_tab[0];
+	new_node->med = sorted_tab[size / 2];
 	new_node->max = get_max(sorted_tab, size);
 	new_node->size = size;
 	new_node->next = NULL;

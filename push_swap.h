@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/24 17:03:53 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/25 15:28:42 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_list
 	int				next_inf;
 	int				max;
 	int				min;
+	int				med;
 	int				cost;
 	int				size;
 	struct s_list	*next;
@@ -41,10 +42,10 @@ void	printlsts(t_list *a, t_list *b);
 void	ft_lstadd_back(t_list **alst, t_list *new);
 int		lst_size(t_list **a);
 /*----------------moves.c-----------*/
-void	push(t_list **a, t_list **b, int ltr, int flag);
-void	swap(t_list **list, int ltr, int flag, int dub);
-void	rotate(t_list **list, int ltr, int flag, int dub);
-void	reverse_rotate(t_list **list, int ltr, int flag, int dub);
+void	push(t_list **a, t_list **b, int ltr);
+void	swap(t_list **list, int ltr, int dub);
+void	rotate(t_list **list, int ltr, int dub);
+void	reverse_rotate(t_list **list, int ltr, int dub);
 
 /*------------sort------------------*/
 int		ft_tablen(int *tab);
@@ -58,9 +59,9 @@ void	print_tab(int *tab, int size);
 int		*tab_cpy(int *tab, int size);
 void	print_vals(t_list *a);
 /*------------dub_moves--------------*/
-void	dub_swap(t_list **a, t_list **b, int flag);
-void	dub_rotate(t_list **list, t_list **b, int flag);
-void	dub_reverse_rotate(t_list **a, t_list **b, int flag);
+void	dub_swap(t_list **a, t_list **b);
+void	dub_rotate(t_list **list, t_list **b);
+void	dub_reverse_rotate(t_list **a, t_list **b);
 /*-------------utils.c---------------*/
 char	*ft_strdup(const char *s1);
 int		ft_atoi(const char *str);
@@ -89,7 +90,7 @@ int		ft_isdigit(int c);
 /*--------------setmoves---------------*/
 void	*set_moves(t_list **a, t_list **b);
 void	moveto_b(t_list **a, t_list **b, int flag);
-void	bring_to_top(t_list **a, t_list **b);
+void	bring_to_top(t_list **a, t_list **b, int index_a, int index_b);
 void	get_cost(t_list	**a, t_list **b);
 void	common_move_rrr(t_list **a, t_list **b);
 void	common_move_rr(t_list **a, t_list **b);

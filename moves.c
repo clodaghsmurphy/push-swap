@@ -6,13 +6,13 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:46 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/24 14:11:35 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/25 13:12:54 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list **list, int ltr, int flag, int dub)
+void	swap(t_list **list, int ltr, int dub)
 {
 	t_list	*pos1;
 	t_list	*pos2;
@@ -24,13 +24,13 @@ void	swap(t_list **list, int ltr, int flag, int dub)
 	pos1->next = pos2->next;
 	*list = pos2;
 	(*list)->next = pos1;
-	if (flag == 1 && ltr == 0 && !dub)
+	if (ltr == 0 && dub == 0)
 		write(1, "sa\n", 3);
-	if (flag == 1 && ltr == 0 && !dub)
+	if (ltr == 0 && dub == 0)
 		write(1, "sb\n", 3);
 }
 
-void	push(t_list **from, t_list **to, int flag, int ltr)
+void	push(t_list **from, t_list **to, int ltr)
 {
 	t_list	*temp;
 
@@ -40,19 +40,20 @@ void	push(t_list **from, t_list **to, int flag, int ltr)
 	*from = (*from)->next;
 	temp->next = *to;
 	*to = temp;
-	if (ltr == 0 && flag == 1)
+	if (ltr == 0)
 		write(1, "pa\n", 3);
-	else if (ltr == 1 && flag == 1)
-		write(1, "pb\n", 3);
+	else if (ltr == 1)
+		write(1, "\npb\n", 4);
 	list_index(to);
 	list_index(from);
 }
 
-void	rotate(t_list **list, int ltr, int flag, int dub)
+void	rotate(t_list **list, int ltr, int dub)
 {
 	t_list	*first;
 	t_list	*last;
 
+	printlsts(*list, *list);
 	if ((*list) == NULL || list == NULL || (*list)->next == NULL)
 		return ;
 	first = (*list);
@@ -62,14 +63,15 @@ void	rotate(t_list **list, int ltr, int flag, int dub)
 	*list = first->next;
 	first->next = NULL;
 	last->next = first;
-	if (flag == 1 && ltr == 0 && !dub)
-		write(1, "ra\n", 3);
-	if (flag == 1 && ltr == 1 && !dub)
+	if (ltr == 0 && dub == 0)
+		write(1, "\nra\n", 4);
+	if (ltr == 1 && dub == 0)
 		write(1, "rb\n", 3);
 	list_index(list);
+	printlsts(*list, *list);
 }
 
-void	reverse_rotate(t_list **list, int ltr, int flag, int dub)
+void	reverse_rotate(t_list **list, int ltr, int dub)
 {
 	t_list	*seclast;
 	t_list	*last;
@@ -86,9 +88,9 @@ void	reverse_rotate(t_list **list, int ltr, int flag, int dub)
 	seclast->next = NULL;
 	last->next = (*list);
 	(*list) = last;
-	if (flag == 1 && ltr == 0 && !dub)
+	if (ltr == 0 && dub == 0)
 		write(1, "rra\n", 3);
-	if (flag == 1 && ltr == 1 && !dub)
+	if (ltr == 1 && dub == 0)
 		write(1, "rrb\n", 3);
 	list_index(list);
 }

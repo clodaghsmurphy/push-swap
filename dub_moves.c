@@ -6,32 +6,29 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 12:53:49 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/21 13:01:54 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/25 12:54:04 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	dub_reverse_rotate(t_list **a, t_list **b, int flag)
+void	dub_reverse_rotate(t_list **a, t_list **b)
 {
-	reverse_rotate(a, 0, flag, 1);
-	reverse_rotate(b, 1, flag, 1);
-	if (flag == 1)
-		write(1, "rrr\n", 3);
+	reverse_rotate(a, 0, 1);
+	reverse_rotate(b, 1, 1);
+	write(1, "rrr\n", 3);
 }
 
-void	dub_rotate(t_list **a, t_list **b, int flag)
+void	dub_rotate(t_list **a, t_list **b)
 {
-	rotate(a, 0, flag, 1);
-	rotate(b, 1, flag, 1);
-	if (flag == 1)
-		write(1, "rr\n", 3);
+	rotate(a, 0, 1);
+	rotate(b, 1, 1);
+	write(1, "rr\n", 3);
 }
 
-void	dub_swap(t_list **a, t_list **b, int flag)
+void	dub_swap(t_list **a, t_list **b)
 {
-	swap(a, 0, flag, 1);
-	swap(b, 1, flag, 1);
-	if (flag == 1)
-		write(1, "ss\n", 3);
+	swap(a, 0, 1);
+	swap(b, 1, 1);
+	write(1, "ss\n", 3);
 }
