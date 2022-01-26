@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:28:37 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/25 12:57:54 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/26 17:43:24 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,31 @@
 
 void	push_swap(t_list **a, t_list **b)
 {
-	get_cost(a, b);
-	set_moves(a, b);
+	int	i;
+	int	flag;
+	int	size;
+
+	size = (*a)-> size;
+	flag = 0;
+	i = 0;
+	//printf("--------------OG LIST------------");
+	//printlsts(*a, *b);
+	while ((*a)->next->next != NULL)
+	{
+		if (med_pres(a))
+			moveto_b(a, b, size);
+		else
+		{
+			get_cost(a, b);
+			push_med(a, b);
+			find_new_med(a);
+		}
+	}
+	if ((*a)->value > (*a)->next->value)
+		swap(a, 0, 0);
+	insert_sort(a, b);
+	//printf("LIST AFTER WHILE\n");
+	//printlsts(*a, *b);
 }
 
 void	exec_moves(t_list **a, t_list **b, char *move)

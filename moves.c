@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:46 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/25 13:12:54 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:36:20 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	swap(t_list **list, int ltr, int dub)
 	(*list)->next = pos1;
 	if (ltr == 0 && dub == 0)
 		write(1, "sa\n", 3);
-	if (ltr == 0 && dub == 0)
+	if (ltr == 1 && dub == 0)
 		write(1, "sb\n", 3);
 }
 
@@ -43,7 +43,7 @@ void	push(t_list **from, t_list **to, int ltr)
 	if (ltr == 0)
 		write(1, "pa\n", 3);
 	else if (ltr == 1)
-		write(1, "\npb\n", 4);
+		write(1, "pb\n", 3);
 	list_index(to);
 	list_index(from);
 }
@@ -53,7 +53,6 @@ void	rotate(t_list **list, int ltr, int dub)
 	t_list	*first;
 	t_list	*last;
 
-	printlsts(*list, *list);
 	if ((*list) == NULL || list == NULL || (*list)->next == NULL)
 		return ;
 	first = (*list);
@@ -64,11 +63,10 @@ void	rotate(t_list **list, int ltr, int dub)
 	first->next = NULL;
 	last->next = first;
 	if (ltr == 0 && dub == 0)
-		write(1, "\nra\n", 4);
+		write(1, "ra\n", 3);
 	if (ltr == 1 && dub == 0)
 		write(1, "rb\n", 3);
 	list_index(list);
-	printlsts(*list, *list);
 }
 
 void	reverse_rotate(t_list **list, int ltr, int dub)
@@ -89,8 +87,8 @@ void	reverse_rotate(t_list **list, int ltr, int dub)
 	last->next = (*list);
 	(*list) = last;
 	if (ltr == 0 && dub == 0)
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 	if (ltr == 1 && dub == 0)
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	list_index(list);
 }

@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/25 15:28:42 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/26 16:12:41 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,18 @@ int		ft_isdigit(int c);
 
 /*--------------setmoves---------------*/
 void	*set_moves(t_list **a, t_list **b);
-void	moveto_b(t_list **a, t_list **b, int flag);
+int		med_pres(t_list **list);
+int		find_new_med(t_list **a);
+void	push_med(t_list **a, t_list **b);
+int		moveto_b(t_list **a, t_list **b, int size);
 void	bring_to_top(t_list **a, t_list **b, int index_a, int index_b);
 void	get_cost(t_list	**a, t_list **b);
 void	common_move_rrr(t_list **a, t_list **b);
 void	common_move_rr(t_list **a, t_list **b);
+/*---------------inser_sort-----------------*/
+void	insert_sort(t_list **a, t_list **b);
+void	find_next_sup(t_list **a, t_list **b);
+
 /*---------------tester-----------------*/
 int		check_sort(t_list **a, t_list **b);
 void	print_index(t_list **list);
