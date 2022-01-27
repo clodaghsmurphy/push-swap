@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:28:37 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/26 17:43:24 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:54:58 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,16 @@ void	push_swap(t_list **a, t_list **b)
 	if ((*a)->value > (*a)->next->value)
 		swap(a, 0, 0);
 	insert_sort(a, b);
-	//printf("LIST AFTER WHILE\n");
-	//printlsts(*a, *b);
+	printf("LIST AFTER WHILE\n");
+	printlsts(*a, *b);
 }
 
-void	exec_moves(t_list **a, t_list **b, char *move)
+void	exec_moves(t_list **a, t_list **b, char *move, int cost)
 {
-	char			**tab;
 	int				i;
 
-	i = (*a)->cost;
-	printf("i in exec moves is %d\n", i);
+	i = cost;
+	printf("i is %d\n", i);
 	if (move == NULL || (*a) == NULL )
 		return ;
 	while (i > -1)

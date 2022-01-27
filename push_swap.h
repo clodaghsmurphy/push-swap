@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/26 16:12:41 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/27 20:05:29 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,19 @@ typedef struct s_list
 	int				min;
 	int				med;
 	int				cost;
+	int				total_cost;
+	int				next_inf_index;
 	int				size;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_data
+{
+	int	index_a;
+	int	index_b;
+	int cost_a;
+	int cost_b;
+} t_data;
 
 /*-------------list.c--------------*/
 
@@ -58,6 +68,13 @@ void	ft_parse(int *tab, int size);
 void	print_tab(int *tab, int size);
 int		*tab_cpy(int *tab, int size);
 void	print_vals(t_list *a);
+/*------------cost--------------*/
+int		get_index_cost(t_list **list, int index);
+int		get_next_cost(t_list **list, int value);
+void	get_cost(t_list	**a, t_list **b);
+void	get_total_cost(t_list **a, t_list **b);
+int		get_index(t_list **list, int value);
+void	assign_next_sup(t_list **a, t_list **b);
 /*------------dub_moves--------------*/
 void	dub_swap(t_list **a, t_list **b);
 void	dub_rotate(t_list **list, t_list **b);
@@ -77,7 +94,7 @@ size_t	ft_strlcpy(char	*dst, const char	*src, size_t size);
 
 /*--------------push_swap.c------------*/
 void	push_swap(t_list **a, t_list **b);
-void	exec_moves(t_list **a, t_list **b, char *move);
+void	exec_moves(t_list **a, t_list **b, char *move, int cost);
 void	print_res(char *res);
 void	command(t_list **a, t_list **b, char *str);
 void	command2(t_list **a, t_list **b, char *str);
@@ -88,18 +105,19 @@ int		isnum(char *str);
 int		ft_isdigit(int c);
 
 /*--------------setmoves---------------*/
-void	*set_moves(t_list **a, t_list **b);
 int		med_pres(t_list **list);
 int		find_new_med(t_list **a);
 void	push_med(t_list **a, t_list **b);
 int		moveto_b(t_list **a, t_list **b, int size);
 void	bring_to_top(t_list **a, t_list **b, int index_a, int index_b);
-void	get_cost(t_list	**a, t_list **b);
-void	common_move_rrr(t_list **a, t_list **b);
-void	common_move_rr(t_list **a, t_list **b);
+void	common_move_rrr(t_list **a, t_list **b, int cost_a, int cost_b);
+void	common_move_rr(t_list **a, t_list **b, int cost_a, int cost_b);
+void	set_move(t_list **a, t_list **b, t_data *list_data);
+
 /*---------------inser_sort-----------------*/
 void	insert_sort(t_list **a, t_list **b);
 void	find_next_sup(t_list **a, t_list **b);
+void	find_best_move(t_list **a, t_list **b);
 
 /*---------------tester-----------------*/
 int		check_sort(t_list **a, t_list **b);

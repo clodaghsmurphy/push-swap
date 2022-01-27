@@ -6,190 +6,97 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:14:57 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/26 17:42:56 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:40:56 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	moveto_b(t_list **a, t_list **b, int size)
+void	set_move(t_list **a, t_list **b, t_data *list_data)
 {
-	int	i;
-
-	i = 0;
-	if ((*a)->value < (*a)->med)
-	{
-		push(a, b, 1);
-		i++;
-		return (0);
-	}
-	else
-	{
-		rotate(a, 0, 0);
-		i++;
-		return (0);
-	}
-}
-
-int	find_new_med(t_list **a)
-{
-	t_list	*temp;
-	int		size;
-	int		i;
-	int		med;
-	int		*tab;
-
-	i = 0;
-	temp = *a;
-	size = lst_size(a);
-	tab = malloc(sizeof(int) * size);
-	if (!tab)
-		return (0);
-	while (temp != NULL)
-	{
-		tab[i] = temp->value;
-		i++;
-		temp = temp->next;
-	}
-	sort_tab(tab, size);
-	temp = *a;
-	med = tab[size / 2];
-	while (temp != NULL)
-	{
-		temp->med = med;
-		temp = temp->next;
-	}
-	return (size);
-}
-
-void	push_med(t_list **a, t_list **b)
-{
-	t_list	*temp;
-	int		i;
-
-	i = 0;
-	temp = *a;
-	while (temp && temp->value != (*a)->med)
-		temp = temp->next;
-	if (temp->index > lst_size(a) / 2)
-	{
-		while (i < temp->cost)
-		{
-			reverse_rotate(a, 0, 0);
-			i++;
-		}
-	}
-	else if (temp->index <= lst_size(a) / 2)
-	{
-		while (i < temp->cost)
-		{
-			rotate(a, 0, 0);
-			i++;
-		}
-	}
-}
-
-int	med_pres(t_list **list)
-{
-	t_list	*temp;
-
-	temp = *list;
-	while (temp)
-	{
-		if (temp->value < (*list)->med)
-			return (1);
-		temp = temp->next;
-	}
-	return (0);
-}
-
-void	get_cost(t_list	**a, t_list **b)
-{
-	t_list	*tp_a;
-	t_list	*tp_b;
-	int		size_a;
-	int		size_b;
+	int	size_b;
+	int	size_a;
 
 	size_a = lst_size(a);
-	size_b = lst_size(b);
-	tp_a = *a;
-	tp_b = *b;
-	while (tp_a != NULL)
+	size_b - lst_size(b);
+	if (list_data->index_a > size_a / 2 && list_data->index_b > size_b / 2)
+		common_move_rrr(a, b, list_data->cost_a, list_data->cost_b);
+	else if (list_data->index_a < size_a / 2 && list_data->index_b < size_b / 2)
+		common_move_rr(a, b, list_data->cost_a, list_data->cost_b);
+	else if (list_data->index_a < size_a / 2 && list_data->index_b > size_b / 2)
 	{
-		if (tp_a->index > size_a / 2)
-			tp_a->cost = (size_a - 1) - (tp_a->index + 1);
-		else
-			tp_a->cost = tp_a->index;
-		tp_a = tp_a->next;
+		exec_moves(a, b, "ra\n", list_data->cost_a);
+		exec_moves(a, b, "rrb\n", list_data->cost_b);
 	}
-	while (tp_b)
+	else if (list_data->index_a > size_a / 2 && list_data->index_b < size_b / 2)
 	{
-		if (tp_b->index > size_b / 2)
-		{
-			tp_b->cost = size_b - tp_b->index;
-		}
-		else
-			tp_b->cost = tp_b->index;
-		tp_b = tp_b->next;
+		exec_moves(a, b, "rra\n", list_data->cost_a);
+		exec_moves(a, b, "rb\n", list_data->cost_b);
 	}
 }
 
-void	common_move_rrr(t_list **a, t_list **b)
+void	common_move_rrr(t_list **a, t_list **b, int cost_a, int cost_b)
 {
 	int	i;
 	int	j;
 
-	printf("j in first if is %d\n", j);
-	if ((*a)->cost < (*b)->cost)
+	if (cost_a < cost_b)
 	{
-		i = (*a)->cost;
-		j = (*b)->cost - i;
-		printf("j in first if is %d\n", j);
-		while (j--)
+		i = cost_a;
+		j = cost_b - i;
+		while (j > 0)
+		{
 			command2(a, b, "rrb\n");
+			j--;
+		}
 	}
-	else if ((*a)->cost > (*b)->cost)
+	else if (cost_a > cost_b)
 	{
-		i = (*b)->cost;
-		j = (*a)->cost - i;
-		printf("j in first if is %d\n", j);
-		while (j--)
+		i = cost_b;
+		j = cost_a - i;
+		while (j > 0)
+		{
 			command2(a, b, "rra\n");
+			j--;
+		}
 	}
 	while (i)
 	{
-		printf("j in first if is %d\n", j);
 		command2(a, b, "rrr\n");
 		i--;
 	}
 }
 
-void	common_move_rr(t_list **a, t_list **b)
+void	common_move_rr(t_list **a, t_list **b, int cost_a, int cost_b)
 {
 	int	i;
 	int	j;
 
-	i = 0;
 	j = 0;
-	printf("-------> IN COMMON MOVE RR\n");
-	if ((*a)->cost < (*b)->cost)
+	i = 0;
+	if (cost_a < cost_b)
 	{
-		i = (*a)->cost;
-		j = (*b)->cost - i;
-		printf("j in first if is %d and i is %d\n", j, i);
-		while (j--)
+		i = cost_a;
+		j = cost_b - i;
+		while (j > 0)
+		{
 			command2(a, b, "rb\n");
+			j--;
+		}
 	}
-	else if ((*a)->cost > (*b)->cost)
+	else if (cost_a > cost_b)
 	{
-		i = (*b)->cost;
-		j = (*a)->cost - i;
-		printf("j in second if is %d and i is %d\n", j, i);
-		while (j-- > 0)
+		i = cost_b;
+		j = cost_a - i;
+		while (j > 0)
+		{
+			printf("in common move and j is %d and i is %d\n", cost_a, cost_b);
+			sleep(1);
 			command2(a, b, "ra\n");
-		printlsts(*a, *b);
+			j--;
+		}
 	}
-	while (i > 0)
+	while (i)
 	{
 		command2(a, b, "rr\n");
 		i--;
