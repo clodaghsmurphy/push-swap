@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:46 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/26 15:36:20 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:45:18 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	swap(t_list **list, int ltr, int dub)
 		write(1, "sa\n", 3);
 	if (ltr == 1 && dub == 0)
 		write(1, "sb\n", 3);
+	list_index(list);
 }
 
 void	push(t_list **from, t_list **to, int ltr)
@@ -41,7 +42,10 @@ void	push(t_list **from, t_list **to, int ltr)
 	temp->next = *to;
 	*to = temp;
 	if (ltr == 0)
+	{
 		write(1, "pa\n", 3);
+		assign_next_sup(to, from);
+	}
 	else if (ltr == 1)
 		write(1, "pb\n", 3);
 	list_index(to);

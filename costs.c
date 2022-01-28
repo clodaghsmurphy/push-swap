@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:03:24 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/27 20:16:46 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:58:48 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ void	get_total_cost(t_list **a, t_list **b)
 	while (temp_b != NULL)
 	{
 		next_sup_cost = get_next_cost(a, temp_b->next_sup);
-		printf("next is %d get next cost %d\n", temp_b->next_sup, next_sup_cost );
 		temp_b->total_cost = temp_b->cost + next_sup_cost;
 		temp_b = temp_b->next;
 	}
-
 }
 
 void	assign_next_sup(t_list **a, t_list **b)
@@ -36,28 +34,30 @@ void	assign_next_sup(t_list **a, t_list **b)
 
 	temp_a = (*a);
 	temp_b = (*b);
-	temp_b->next_sup = temp_a->value;
-	while (temp_b != NULL)
+	temp_b->next_sup = (*a)->min;
+	while (temp_b->next != NULL )
 	{
-	//	printf("in assing sup while and temp a value is %d and b is %d and next sup is %d\n", temp_a->value, temp_b->value, temp_b->next_sup);
-		if (temp_a->value > temp_b->value && temp_a->value <= temp_b->next_sup)
+		while (temp_a != NULL)
 		{
-			temp_b->next_sup = temp_a->value;
-			temp_b = temp_b->next;
+			if (temp_a->value > temp_b->value)
+			{
+				if (temp_a->value >= temp_b->next_sup)
+				{
+					temp_b->next_sup = temp_a->value;
+					break ;
+				}                                                
+			}
+			temp_a = temp_a->next;	
 		}
-		else if (temp_a)
-			temp_a = temp_a->next;
-		else
-		{
 			temp_b = temp_b->next;
-			temp_a = (*a);
-		}
 	}
+	printlsts(*a, *b);
 }
 
 int	get_next_cost(t_list **list, int value)
 {
 	t_list	*temp;
+	int		cost;
 
 	temp = (*list);
 	while (temp->next != NULL && temp->value != value)
@@ -89,7 +89,7 @@ void	get_cost(t_list	**a, t_list **b)
 	while (tp_a != NULL)
 	{
 		if (tp_a->index > size_a / 2)
-			tp_a->cost = (size_a - 1) - (tp_a->index + 1);
+			tp_a->cost = (size_a) - (tp_a->index);
 		else
 			tp_a->cost = tp_a->index;
 		tp_a = tp_a->next;

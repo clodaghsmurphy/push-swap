@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/27 20:05:29 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:32:39 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_data
 {
 	int	index_a;
 	int	index_b;
-	int cost_a;
-	int cost_b;
+	int	cost_a;
+	int	cost_b;
 } t_data;
 
 /*-------------list.c--------------*/

@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:14:57 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/27 19:40:56 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/28 18:41:57 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,15 @@ void	set_move(t_list **a, t_list **b, t_data *list_data)
 	int	size_a;
 
 	size_a = lst_size(a);
-	size_b - lst_size(b);
+	size_b = lst_size(b);
+	get_cost(a, b);
+	printf("size A is %d\n", size_a);
+	printf("size B is %d\n", size_b);
+	printf("a index = %d\n", list_data->index_a);
+	printf("b index = %d\n", list_data->index_b);
+	printf("a cost = %d\n", list_data->cost_a);
+	printf("b cost = %d\n", list_data->cost_b);
+	sleep(1);
 	if (list_data->index_a > size_a / 2 && list_data->index_b > size_b / 2)
 		common_move_rrr(a, b, list_data->cost_a, list_data->cost_b);
 	else if (list_data->index_a < size_a / 2 && list_data->index_b < size_b / 2)
@@ -33,6 +41,8 @@ void	set_move(t_list **a, t_list **b, t_data *list_data)
 		exec_moves(a, b, "rra\n", list_data->cost_a);
 		exec_moves(a, b, "rb\n", list_data->cost_b);
 	}
+	printlsts(*a, *b);
+
 }
 
 void	common_move_rrr(t_list **a, t_list **b, int cost_a, int cost_b)
@@ -90,8 +100,6 @@ void	common_move_rr(t_list **a, t_list **b, int cost_a, int cost_b)
 		j = cost_a - i;
 		while (j > 0)
 		{
-			printf("in common move and j is %d and i is %d\n", cost_a, cost_b);
-			sleep(1);
 			command2(a, b, "ra\n");
 			j--;
 		}
