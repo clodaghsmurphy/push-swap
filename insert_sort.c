@@ -10,16 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-void	insert_sort(t_list **a, t_list **b)
-{	
+void insert_sort(t_list **a, t_list **b)
+{
 	if ((*a) == NULL || (*b) == NULL)
-		return ;
+		return;
 	while ((*b))
 	{
 		assign_next_sup(a, b);
-	//	printf("A value is %d  B value is %d and b next sup is %d\n", (*a)->value, (*b)->value, (*b)->next_sup);
 		if ((*a)->value == (*b)->next_sup)
 			push(b, a, 0);
 		else
@@ -28,33 +27,35 @@ void	insert_sort(t_list **a, t_list **b)
 			get_total_cost(a, b);
 			find_best_move(a, b);
 		}
+		printlsts(*a, *b);
 	}
+	min_to_top(a);
 }
 
-void	find_best_move(t_list **a, t_list **b)
+void find_best_move(t_list **a, t_list **b)
 {
-	t_list	*temp;
-	t_data	*list_data;
-	int		lowest_cost;
-	int		next_sup;
-
+	t_list *temp;
+	t_data *list_data;
+	int lowest_cost;
+	int next_sup;
+	get_cost(a, b);
 	list_data = malloc(sizeof(t_data));
 	if (!list_data)
-		return ;
+		return;
 	temp = (*b);
 	lowest_cost = temp->total_cost;
 	while (temp != NULL)
 	{
 		if (temp->total_cost <= lowest_cost)
 		{
-			printf("find best move loop and value is %d and its next sup is%d\n", temp->value, temp->next_sup);
-			sleep(1);
 			lowest_cost = temp->total_cost;
 			list_data->index_b = temp->index;
+			list_data->best_move = temp->value;
+			list_data->next_sup = temp->next_sup;
 			list_data->cost_b = temp->cost;
-			printf("total cost b is %d and value is %d\n", temp->total_cost, temp->value);
-			printf("a value is %d and cost is %d\n", (*a)->value, (*a)->cost);
 			next_sup = temp->next_sup;
+			/*printf("TEMP COST : %d TEMP INDEX : %d\n", list_data->cost_b, list_data->index_b);
+			sleep(1);*/
 		}
 		temp = temp->next;
 	}
@@ -63,10 +64,10 @@ void	find_best_move(t_list **a, t_list **b)
 	set_move(a, b, list_data);
 }
 
-void	find_next_sup(t_list **a, t_list **b)
+void find_next_sup(t_list **a, t_list **b)
 {
-	t_list	*temp;
-	int		i;
+	t_list *temp;
+	int i;
 
 	get_cost(a, b);
 	i = 0;
@@ -90,4 +91,27 @@ void	find_next_sup(t_list **a, t_list **b)
 		}
 	}
 	i = 0;
+}
+
+void min_to_top(t_list **a)
+{
+	t_list *temp;
+	int index;
+	int size;
+
+	size = lst_size(a);
+	temp = (*a);
+	while (temp != NULL && temp->value != (*a)->min)
+		temp = temp->next;
+	index = temp->index;
+	if (index < size / 2)
+	{
+		while ((*a)->value != (*a)->min)
+			rotate(a, 0, 0);
+	}
+	else if (index > size / 2)
+	{
+		while ((*a)->value != (*a)->min)
+			reverse_rotate(a, 0, 0);
+	}
 }

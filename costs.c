@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-void	get_total_cost(t_list **a, t_list **b)
+void get_total_cost(t_list **a, t_list **b)
 {
-	t_list	*temp_b;
-	t_list	*temp_a;
-	int		next_sup_cost;
+	t_list *temp_b;
+	t_list *temp_a;
+	int next_sup_cost;
 
 	temp_b = (*b);
 	while (temp_b != NULL)
@@ -27,47 +27,45 @@ void	get_total_cost(t_list **a, t_list **b)
 	}
 }
 
-void	assign_next_sup(t_list **a, t_list **b)
+void assign_next_sup(t_list **a, t_list **b)
 {
-	t_list	*temp_a;
-	t_list	*temp_b;
+	t_list *temp_a;
+	t_list *temp_b;
 
+	if (*b == NULL)
+		return;
 	temp_a = (*a);
 	temp_b = (*b);
-	temp_b->next_sup = (*a)->min;
-	while (temp_b->next != NULL )
+	temp_b->next_sup = (*a)->max;
+	while (temp_b != NULL)
 	{
 		while (temp_a != NULL)
 		{
 			if (temp_a->value > temp_b->value)
 			{
-				if (temp_a->value >= temp_b->next_sup)
-				{
+				if (temp_a->value - temp_b->value < temp_b->next_sup - temp_b->value)
 					temp_b->next_sup = temp_a->value;
-					break ;
-				}                                                
 			}
-			temp_a = temp_a->next;	
+			temp_a = temp_a->next;
 		}
-			temp_b = temp_b->next;
+		temp_b = temp_b->next;
 	}
-	printlsts(*a, *b);
 }
 
-int	get_next_cost(t_list **list, int value)
+int get_next_cost(t_list **list, int value)
 {
-	t_list	*temp;
-	int		cost;
+	t_list *temp;
+	int cost;
 
 	temp = (*list);
-	while (temp->next != NULL && temp->value != value)
+	while (temp->next != NULL && temp->index != value)
 		temp = temp->next;
 	return (temp->cost);
 }
 
-int	get_index_cost(t_list **list, int index)
+int get_index_cost(t_list **list, int index)
 {
-	t_list	*temp;
+	t_list *temp;
 
 	temp = (*list);
 	while (temp != NULL && temp->index != index)
@@ -75,12 +73,12 @@ int	get_index_cost(t_list **list, int index)
 	return (temp->cost);
 }
 
-void	get_cost(t_list	**a, t_list **b)
+void get_cost(t_list **a, t_list **b)
 {
-	t_list	*tp_a;
-	t_list	*tp_b;
-	int		size_a;
-	int		size_b;
+	t_list *tp_a;
+	t_list *tp_b;
+	int size_a;
+	int size_b;
 
 	size_a = lst_size(a);
 	size_b = lst_size(b);
@@ -106,9 +104,9 @@ void	get_cost(t_list	**a, t_list **b)
 	}
 }
 
-int	get_index(t_list **list, int value)
+int get_index(t_list **list, int value)
 {
-	t_list	*temp;
+	t_list *temp;
 
 	temp = (*list);
 	while (temp->next != NULL && temp->value != value)

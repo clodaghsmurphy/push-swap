@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-void	push_swap(t_list **a, t_list **b)
+void push_swap(t_list **a, t_list **b)
 {
-	int	i;
-	int	flag;
-	int	size;
+	int i;
+	int flag;
+	int size;
 
-	size = (*a)-> size;
+	size = (*a)->size;
 	flag = 0;
 	i = 0;
 	//printf("--------------OG LIST------------");
@@ -37,19 +37,18 @@ void	push_swap(t_list **a, t_list **b)
 	if ((*a)->value > (*a)->next->value)
 		swap(a, 0, 0);
 	insert_sort(a, b);
-	printf("LIST AFTER WHILE\n");
-	printlsts(*a, *b);
+	/*printf("LIST AFTER WHILE\n");
+	printlsts(*a, *b);*/
 }
 
-void	exec_moves(t_list **a, t_list **b, char *move, int cost)
+void exec_moves(t_list **a, t_list **b, char *move, int cost)
 {
-	int				i;
+	int i;
 
 	i = cost;
-	printf("i is %d\n", i);
-	if (move == NULL || (*a) == NULL )
-		return ;
-	while (i > -1)
+	if (move == NULL || (*a) == NULL)
+		return;
+	while (i > 0)
 	{
 		command(a, b, move);
 		command2(a, b, move);
@@ -57,7 +56,7 @@ void	exec_moves(t_list **a, t_list **b, char *move, int cost)
 	}
 }
 
-void	command(t_list **a, t_list **b, char *str)
+void command(t_list **a, t_list **b, char *str)
 {
 	if (!ft_strncmp(str, "sa\n", 100))
 		swap(a, 0, 0);
@@ -73,7 +72,7 @@ void	command(t_list **a, t_list **b, char *str)
 		push(a, b, 1);
 }
 
-void	command2(t_list **a, t_list **b, char *str)
+void command2(t_list **a, t_list **b, char *str)
 {
 	if (!ft_strncmp(str, "ra\n", 100))
 		rotate(a, 0, 0);
