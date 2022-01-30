@@ -77,6 +77,7 @@ void get_cost(t_list **a, t_list **b);
 void get_total_cost(t_list **a, t_list **b);
 int get_index(t_list **list, int value);
 void assign_next_sup(t_list **a, t_list **b);
+int get_next_sup_cost(t_list **list, int value);
 /*------------dub_moves--------------*/
 void dub_swap(t_list **a, t_list **b);
 void dub_rotate(t_list **list, t_list **b);

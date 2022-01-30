@@ -21,7 +21,10 @@ void get_total_cost(t_list **a, t_list **b)
 	temp_b = (*b);
 	while (temp_b != NULL)
 	{
-		next_sup_cost = get_next_cost(a, temp_b->next_sup);
+		/*printf("---------TOTAL COST LOOP-------------\n");
+		printf("B value is %d and b next sup is %d\n", temp_b->value, temp_b->next_sup);*/
+		next_sup_cost = get_next_sup_cost(a, temp_b->next_sup);
+		//printf("NEXT SUP COST : %d\n", next_sup_cost);
 		temp_b->total_cost = temp_b->cost + next_sup_cost;
 		temp_b = temp_b->next;
 	}
@@ -41,24 +44,45 @@ void assign_next_sup(t_list **a, t_list **b)
 	{
 		while (temp_a != NULL)
 		{
+			/*	printf("---------------------ASSIGN NEXT SUP-------------------\n");
+			printf("A VALUE : %d B VALUE : %d B NEXT SUP : %d\n", temp_a->value, temp_b->value, temp_b->next_sup);*/
+
 			if (temp_a->value > temp_b->value)
 			{
+				//printf("A value %d - B VALUE %d < B next sup %d - B VALUE %d\n", temp_a->value, temp_b->value, temp_b->next_sup, temp_b->value);
 				if (temp_a->value - temp_b->value < temp_b->next_sup - temp_b->value)
 					temp_b->next_sup = temp_a->value;
 			}
 			temp_a = temp_a->next;
 		}
+		//if (temp_b->value == 81)
+		temp_a = (*a);
 		temp_b = temp_b->next;
 	}
+	//print_vals(*b);
+	//sleep(1);
 }
 
-int get_next_cost(t_list **list, int value)
+int get_next_cost(t_list **list, int index)
 {
 	t_list *temp;
-	int cost;
 
 	temp = (*list);
-	while (temp->next != NULL && temp->index != value)
+	/*printf("-------GET NEXT COST---------\n");
+	printf("VALUE IS %d and COST IS : %d\n", temp->value, temp->cost);*/
+	while (temp->next != NULL && temp->index != index)
+		temp = temp->next;
+	return (temp->cost);
+}
+
+int get_next_sup_cost(t_list **list, int value)
+{
+	t_list *temp;
+
+	temp = (*list);
+	/*printf("-------GET NEXT COST---------\n");
+	printf("VALUE IS %d and COST IS : %d\n", temp->value, temp->cost);*/
+	while (temp->next != NULL && temp->value != value)
 		temp = temp->next;
 	return (temp->cost);
 }

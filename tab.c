@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-int	ft_tablen(int *tab)
+int ft_tablen(int *tab)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (tab[i])
@@ -22,9 +22,9 @@ int	ft_tablen(int *tab)
 	return (i);
 }
 
-void	print_tab(int *tab, int size)
+void print_tab(int *tab, int size)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < size)
@@ -35,10 +35,10 @@ void	print_tab(int *tab, int size)
 	printf("\n");
 }
 
-int	*tab_cpy(int *tab, int size)
+int *tab_cpy(int *tab, int size)
 {
-	int	*new;
-	int	i;
+	int *new;
+	int i;
 
 	i = 0;
 	new = malloc(sizeof(int) * size);
@@ -52,30 +52,26 @@ int	*tab_cpy(int *tab, int size)
 	return (new);
 }
 
-void	print_vals(t_list *a)
+void print_vals(t_list *a)
 {
-	t_list	*temp;
+	t_list *temp;
 
 	temp = a;
 	while (temp)
 	{
 		printf("\n");
 		printf("value is %d\n", temp->value);
-		printf("get next inf is %d\n", temp->next_inf);
 		printf("next sup is %d\n", temp->next_sup);
-		printf("index is %d\n", temp->index);
-		printf("min is %d\n", temp->min);
-		printf("max is %d\n", temp->max);
 		printf("cost is %d\n", temp->cost);
 		printf("\n");
 		temp = temp->next;
 	}
 }
 
-void	sort_tab(int *tab, int size)
+void sort_tab(int *tab, int size)
 {
-	int		i;
-	int		swap;
+	int i;
+	int swap;
 
 	i = 0;
 	while (i < size - 1)

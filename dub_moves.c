@@ -10,23 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-void	dub_reverse_rotate(t_list **a, t_list **b)
+void dub_reverse_rotate(t_list **a, t_list **b)
 {
 	reverse_rotate(a, 0, 1);
 	reverse_rotate(b, 1, 1);
-	write(1, "rrr\n", 3);
+	write(1, "rrr\n", 4);
 }
 
-void	dub_rotate(t_list **a, t_list **b)
+void dub_rotate(t_list **a, t_list **b)
 {
 	rotate(a, 0, 1);
 	rotate(b, 1, 1);
 	write(1, "rr\n", 3);
 }
 
-void	dub_swap(t_list **a, t_list **b)
+void dub_swap(t_list **a, t_list **b)
 {
 	swap(a, 0, 1);
 	swap(b, 1, 1);

@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void	printlsts(t_list *a, t_list *b)
+void printlsts(t_list *a, t_list *b)
 {
-	t_list	*current_a;
-	t_list	*current_b;
+	t_list *current_a;
+	t_list *current_b;
 
 	current_a = a;
 	current_b = b;
@@ -40,9 +40,9 @@ void	printlsts(t_list *a, t_list *b)
 	}
 }
 
-t_list	*ft_lstnew(int value, int *sorted_tab, int index, int size)
+t_list *ft_lstnew(int value, int *sorted_tab, int index, int size)
 {
-	t_list	*new_node;
+	t_list *new_node;
 
 	if (!value)
 		return (NULL);
@@ -52,7 +52,7 @@ t_list	*ft_lstnew(int value, int *sorted_tab, int index, int size)
 	new_node->value = value;
 	new_node->index = index;
 	new_node->next_inf = get_next_inf(value, sorted_tab, size);
-	new_node->next_sup = get_next_sup(value, sorted_tab, size);
+	new_node->next_sup = get_max(sorted_tab, size);
 	new_node->min = sorted_tab[0];
 	new_node->med = sorted_tab[size / 2];
 	new_node->max = get_max(sorted_tab, size);
@@ -61,29 +61,29 @@ t_list	*ft_lstnew(int value, int *sorted_tab, int index, int size)
 	return (new_node);
 }
 
-void	ft_lstadd_back(t_list **alst, t_list *new)
+void ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list	*last;
+	t_list *last;
 
 	last = *alst;
 	if (*alst == NULL)
 	{
 		*alst = new;
-		return ;
+		return;
 	}
 	while (last->next != NULL)
 		last = last->next;
 	last->next = new;
 }
 
-void	list_index(t_list **list)
+void list_index(t_list **list)
 {
-	t_list			*temp;
-	unsigned int	i;
+	t_list *temp;
+	unsigned int i;
 
 	i = 0;
 	if (*list == NULL)
-		return ;
+		return;
 	temp = (*list);
 	while (temp)
 	{
@@ -93,10 +93,10 @@ void	list_index(t_list **list)
 	}
 }
 
-int	lst_size(t_list **a)
+int lst_size(t_list **a)
 {
-	int		i;
-	t_list	*temp;
+	int i;
+	t_list *temp;
 
 	temp = *a;
 	i = 0;

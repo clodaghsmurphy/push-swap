@@ -27,18 +27,18 @@ void set_move(t_list **a, t_list **b, t_data *list_data)
 	printf("\n------------------------------------------------------\n");*/
 	while ((*a)->value != (list_data->next_sup) || (*b)->value != list_data->best_move)
 	{
-
+		/*	printf("-----------PRINT LIST IN SET MOVES-----------\n");
 		printlsts(*a, *b);
 
-		printf("size A/ 2 is %d\n", size_a / 2);
+		printf("\nsize A/ 2 is %d\n", size_a / 2);
 		printf("size /2 is %d\n", size_b / 2);
 		printf("a index = %d\n", list_data->index_a);
 		printf("b index = %d\n", list_data->index_b);
 		printf("a cost = %d\n", list_data->cost_a);
 		printf("b cost = %d\n", list_data->cost_b);
 		printf("next sup = %d\n", list_data->next_sup);
-		printf("best move = %d\n", list_data->best_move);
-		sleep(1);
+		printf("best move = %d\n\n", list_data->best_move);*/
+		//sleep(1);
 		if (list_data->index_a >= size_a / 2 && list_data->index_b >= size_b / 2)
 		{
 			common_move_rrr(a, b, list_data->cost_a, list_data->cost_b);
@@ -54,7 +54,6 @@ void set_move(t_list **a, t_list **b, t_data *list_data)
 		}
 		if (list_data->index_a > size_a / 2 && list_data->index_b < size_b / 2)
 		{
-			printf("in sexonf exec move\n");
 			exec_moves(a, b, "rra\n", list_data->cost_a);
 			exec_moves(a, b, "rb\n", list_data->cost_b);
 		}
@@ -69,8 +68,12 @@ void common_move_rrr(t_list **a, t_list **b, int cost_a, int cost_b)
 	int i;
 	int j;
 
-	i = 0;
-	j = 0;
+	i = cost_a;
+	j = cost_b;
+	/*printf("HERE !!!\n\n\n\n\n");
+	printf("cost a is : %d and cost b is : %d\n", cost_a, cost_b);*/
+
+	//	sleep(1);
 	if (cost_a < cost_b)
 	{
 		i = cost_a;
@@ -91,7 +94,7 @@ void common_move_rrr(t_list **a, t_list **b, int cost_a, int cost_b)
 			j--;
 		}
 	}
-	while (i)
+	while (i > 0)
 	{
 		command2(a, b, "rrr\n");
 		i--;
@@ -103,8 +106,10 @@ void common_move_rr(t_list **a, t_list **b, int cost_a, int cost_b)
 	int i;
 	int j;
 
-	j = 0;
-	i = 0;
+	j = cost_a;
+	i = cost_b;
+	/*printf("HERE !!!\n\n\n\n\n");
+	printf("cost a is : %d and cost b is : %d\n", cost_a, cost_b);*/
 	if (cost_a < cost_b)
 	{
 		i = cost_a;
@@ -125,7 +130,7 @@ void common_move_rr(t_list **a, t_list **b, int cost_a, int cost_b)
 			j--;
 		}
 	}
-	while (i)
+	while (i > 0)
 	{
 		command2(a, b, "rr\n");
 		i--;
