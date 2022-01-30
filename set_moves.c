@@ -20,25 +20,8 @@ void set_move(t_list **a, t_list **b, t_data *list_data)
 	size_a = lst_size(a);
 	size_b = lst_size(b);
 	assign_next_sup(a, b);
-
-	/*printf("\n-------------BEFORE LOOP--------------------------------\n");
-	printf("A value is %d and next sup is %d\n", (*a)->value, (list_data->next_sup));
-	printf("B value is %d and best move is %d\n", (*b)->value, list_data->best_move);
-	printf("\n------------------------------------------------------\n");*/
 	while ((*a)->value != (list_data->next_sup) || (*b)->value != list_data->best_move)
 	{
-		/*	printf("-----------PRINT LIST IN SET MOVES-----------\n");
-		printlsts(*a, *b);
-
-		printf("\nsize A/ 2 is %d\n", size_a / 2);
-		printf("size /2 is %d\n", size_b / 2);
-		printf("a index = %d\n", list_data->index_a);
-		printf("b index = %d\n", list_data->index_b);
-		printf("a cost = %d\n", list_data->cost_a);
-		printf("b cost = %d\n", list_data->cost_b);
-		printf("next sup = %d\n", list_data->next_sup);
-		printf("best move = %d\n\n", list_data->best_move);*/
-		//sleep(1);
 		if (list_data->index_a >= size_a / 2 && list_data->index_b >= size_b / 2)
 		{
 			common_move_rrr(a, b, list_data->cost_a, list_data->cost_b);
@@ -70,10 +53,7 @@ void common_move_rrr(t_list **a, t_list **b, int cost_a, int cost_b)
 
 	i = cost_a;
 	j = cost_b;
-	/*printf("HERE !!!\n\n\n\n\n");
-	printf("cost a is : %d and cost b is : %d\n", cost_a, cost_b);*/
 
-	//	sleep(1);
 	if (cost_a < cost_b)
 	{
 		i = cost_a;
@@ -108,8 +88,6 @@ void common_move_rr(t_list **a, t_list **b, int cost_a, int cost_b)
 
 	j = cost_a;
 	i = cost_b;
-	/*printf("HERE !!!\n\n\n\n\n");
-	printf("cost a is : %d and cost b is : %d\n", cost_a, cost_b);*/
 	if (cost_a < cost_b)
 	{
 		i = cost_a;

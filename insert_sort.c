@@ -28,10 +28,9 @@ void insert_sort(t_list **a, t_list **b)
 			assign_next_sup(a, b);
 			find_best_move(a, b);
 		}
-		//printlsts(*a, *b);
-		//	sleep(1);
 	}
 	min_to_top(a);
+	ft_lstclear(a);
 	//printlsts(*a, *b);
 }
 
@@ -51,12 +50,8 @@ void find_best_move(t_list **a, t_list **b)
 		return;
 	temp = (*b);
 	lowest_cost = temp->total_cost;
-	/*	printf("\n----------FIND BEST MOVE-------------------------\n");
-	printf("lowest start starts at temp->total cost which is %d\n", lowest_cost);*/
 	while (temp != NULL)
 	{
-		//printf("b value is %d and its total cost is %d and the lowest cost is%d\n", temp->value, temp->total_cost, lowest_cost);
-
 		if (temp->total_cost <= lowest_cost)
 		{
 			lowest_cost = temp->total_cost;
@@ -65,11 +60,6 @@ void find_best_move(t_list **a, t_list **b)
 			list_data->next_sup = temp->next_sup;
 			list_data->cost_b = temp->cost;
 			next_sup = temp->next_sup;
-			/*printf("\n----------FIND BEST MOVE LOOP-------------------------\n");
-
-			printf("B COST : %d B INDEX : %d\n", list_data->cost_b, list_data->index_b);
-			printf("B VALUE : %d B TOTAL COST : %d\n", temp->value, temp->total_cost);
-			printf("B NEXT SUP : %d\n", next_sup);*/
 		}
 		temp = temp->next;
 	}

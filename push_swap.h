@@ -22,13 +22,11 @@ typedef struct s_list
 	int value;
 	int index;
 	int next_sup;
-	int next_inf;
 	int max;
 	int min;
 	int med;
 	int cost;
 	int total_cost;
-	int next_inf_index;
 	int size;
 	struct s_list *next;
 } t_list;

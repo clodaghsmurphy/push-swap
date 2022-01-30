@@ -21,8 +21,6 @@ void push_swap(t_list **a, t_list **b)
 	size = (*a)->size;
 	flag = 0;
 	i = 0;
-	//printf("--------------OG LIST------------");
-	//printlsts(*a, *b);
 	while ((*a)->next->next != NULL)
 	{
 		if (med_pres(a))
@@ -37,8 +35,6 @@ void push_swap(t_list **a, t_list **b)
 	if ((*a)->value > (*a)->next->value)
 		swap(a, 0, 0);
 	insert_sort(a, b);
-	/*printf("LIST AFTER WHILE\n");
-	printlsts(*a, *b);*/
 }
 
 void exec_moves(t_list **a, t_list **b, char *move, int cost)
