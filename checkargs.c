@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:25:43 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/21 13:04:18 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:07:10 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	isnum(char	*str)
 	unsigned int	j;
 
 	i = 0;
+	if (str[i] == '-')
+		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))

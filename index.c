@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dub_moves.c                                        :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 12:53:49 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/31 10:57:17 by clmurphy         ###   ########.fr       */
+/*   Created: 2022/01/31 10:27:03 by clmurphy          #+#    #+#             */
+/*   Updated: 2022/01/31 11:04:11 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include"push_swap.h"
 
-void	dub_reverse_rotate(t_list **a, t_list **b)
+int	get_index_cost(t_list **list, int index)
 {
-	reverse_rotate(a, 0, 1);
-	reverse_rotate(b, 1, 1);
-	write(1, "rrr\n", 4);
+	t_list	*temp;
+
+	temp = (*list);
+	while (temp != NULL && temp->index != index)
+		temp = temp->next;
+	return (temp->cost);
 }
 
-void	dub_rotate(t_list **a, t_list **b)
+int	get_index(t_list **list, int value)
 {
-	rotate(a, 0, 1);
-	rotate(b, 1, 1);
-	write(1, "rr\n", 3);
-}
+	t_list	*temp;
 
-void	dub_swap(t_list **a, t_list **b)
-{
-	swap(a, 0, 1);
-	swap(b, 1, 1);
-	write(1, "ss\n", 3);
+	temp = (*list);
+	while (temp->next != NULL && temp->value != value)
+		temp = temp->next;
+	return (temp->index);
 }

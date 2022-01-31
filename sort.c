@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:46:39 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/24 17:04:31 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/31 14:44:14 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_parse(int *tab, int size)
 		ft_lstadd_back(&a, ft_lstnew(tab[i], sorted_tab, i, size));
 		i++;
 	}
+	free(sorted_tab);
 	if (check_dub(a))
 		push_swap(&a, &b);
 	else
@@ -34,26 +35,6 @@ void	ft_parse(int *tab, int size)
 		write(1, "no doubles please..\n", 20);
 		exit(0);
 	}
-}
-
-int	get_next_inf(int n, int	*tab, int size)
-{
-	int				next_inf;
-	unsigned int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (n == tab[i])
-		{
-			if (i == 0)
-				return (n);
-			next_inf = tab[i - 1];
-			return (next_inf);
-		}
-		i++;
-	}
-	return (n);
 }
 
 int	get_next_sup(int n, int	*tab, int size)

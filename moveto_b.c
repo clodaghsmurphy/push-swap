@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:08:49 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/27 16:09:24 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/31 13:14:24 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	find_new_med(t_list **a)
 		temp->med = med;
 		temp = temp->next;
 	}
-	return (size);
+	return (free(tab), size);
 }
 
 void	push_med(t_list **a, t_list **b)

@@ -12,48 +12,61 @@
 
 #include "push_swap.h"
 
-void set_move(t_list **a, t_list **b, t_data *list_data)
+void	set_move(t_list **a, t_list **b, t_data *list_data)
 {
-	int size_b;
-	int size_a;
+	int	size_b;
+	int	size_a;
+	int	next_sup;
 
-	size_a = lst_size(a);
-	size_b = lst_size(b);
-	assign_next_sup(a, b);
-	while ((*a)->value != (list_data->next_sup) || (*b)->value != list_data->best_move)
+	next_sup = list_data->next_sup;
+	size_a = lst_size(a) / 2;
+	size_b = lst_size(b) / 2;
+	while ((*a)->value != next_sup || (*b)->value != list_data->best_move)
 	{
-		if (list_data->index_a >= size_a / 2 && list_data->index_b >= size_b / 2)
+		if (list_data->index_a > size_a && list_data->index_b > size_b)
 		{
 			common_move_rrr(a, b, list_data->cost_a, list_data->cost_b);
 		}
-		if (list_data->index_a <= size_a / 2 && list_data->index_b <= size_b / 2)
+		if (list_data->index_a <= size_a && list_data->index_b <= size_b)
 		{
 			common_move_rr(a, b, list_data->cost_a, list_data->cost_b);
 		}
-		if (list_data->index_a < size_a / 2 && list_data->index_b > size_b / 2)
+		if (list_data->index_a < size_a && list_data->index_b > size_b)
 		{
 			exec_moves(a, b, "ra\n", list_data->cost_a);
 			exec_moves(a, b, "rrb\n", list_data->cost_b);
 		}
-		if (list_data->index_a > size_a / 2 && list_data->index_b < size_b / 2)
+		if (list_data->index_a > size_a && list_data->index_b <= size_b)
 		{
 			exec_moves(a, b, "rra\n", list_data->cost_a);
 			exec_moves(a, b, "rb\n", list_data->cost_b);
 		}
+	//	if ((*b)->next == NULL)
+	//		last_move(a, b, list_data, size_a);
 	}
-	assign_next_sup(a, b);
-
-	push(b, a, 0);
+//	push(b, a, 0);
+	free(list_data);
 }
 
-void common_move_rrr(t_list **a, t_list **b, int cost_a, int cost_b)
+void	last_move(t_list **a, t_list **b, t_data *list_data, int size_a)
 {
-	int i;
-	int j;
+	while ((*a)->value != (list_data->next_sup) || (*b)->value != list_data->best_move)
+	{
+		if (list_data->index_a < size_a)
+			exec_moves(a, b, "ra\n", list_data->cost_a);
+		else if (list_data->index_a > size_a)
+			exec_moves(a, b, "rra\n", list_data->cost_a);
+	}
+}
+
+
+void	common_move_rrr(t_list **a, t_list **b, int cost_a, int cost_b)
+{
+	int	i;
+	int	j;
 
 	i = cost_a;
 	j = cost_b;
-
 	if (cost_a < cost_b)
 	{
 		i = cost_a;

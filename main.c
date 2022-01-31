@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:39 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/24 16:47:11 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:11:56 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int	main(int ac, char **av)
 			i++;
 		}
 		else
+		{
+			write(1, "not a number genius..\n", 22);
 			return (free(tab), 0);
+		}
 	}
 	i = 0;
 	ft_parse(tab, ac - 1);

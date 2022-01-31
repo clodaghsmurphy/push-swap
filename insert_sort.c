@@ -6,17 +6,16 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:42:29 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/28 18:08:27 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:01:02 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void insert_sort(t_list **a, t_list **b)
+void	insert_sort(t_list **a, t_list **b)
 {
-
 	if ((*a) == NULL || (*b) == NULL)
-		return;
+		return ;
 	while ((*b))
 	{
 		if ((*a)->value == (*b)->next_sup)
@@ -25,29 +24,27 @@ void insert_sort(t_list **a, t_list **b)
 		{
 			get_cost(a, b);
 			get_total_cost(a, b);
-			assign_next_sup(a, b);
 			find_best_move(a, b);
+			assign_next_sup(a, b);
 		}
 	}
 	min_to_top(a);
 	ft_lstclear(a);
-	//printlsts(*a, *b);
 }
 
-void find_best_move(t_list **a, t_list **b)
+void	find_best_move(t_list **a, t_list **b)
 {
-	t_list *temp;
-	t_data *list_data;
-	int lowest_cost;
-	int next_sup;
+	t_list	*temp;
+	t_data	*list_data;
+	int		lowest_cost;
+	int		next_sup;
 
 	get_cost(a, b);
 	get_total_cost(a, b);
 	assign_next_sup(a, b);
-
 	list_data = malloc(sizeof(t_data));
 	if (!list_data)
-		return;
+		return ;
 	temp = (*b);
 	lowest_cost = temp->total_cost;
 	while (temp != NULL)
@@ -68,10 +65,10 @@ void find_best_move(t_list **a, t_list **b)
 	set_move(a, b, list_data);
 }
 
-void find_next_sup(t_list **a, t_list **b)
+void	find_next_sup(t_list **a, t_list **b)
 {
-	t_list *temp;
-	int i;
+	t_list	*temp;
+	int		i;
 
 	get_cost(a, b);
 	i = 0;
@@ -97,11 +94,11 @@ void find_next_sup(t_list **a, t_list **b)
 	i = 0;
 }
 
-void min_to_top(t_list **a)
+void	min_to_top(t_list **a)
 {
-	t_list *temp;
-	int index;
-	int size;
+	t_list	*temp;
+	int		index;
+	int		size;
 
 	size = lst_size(a);
 	temp = (*a);

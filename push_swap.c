@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:28:37 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/28 16:32:18 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:09:03 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void push_swap(t_list **a, t_list **b)
 	size = (*a)->size;
 	flag = 0;
 	i = 0;
+	if ((*a) == NULL)
+		return ;
 	while ((*a)->next->next != NULL)
 	{
 		if (med_pres(a))
@@ -28,7 +30,6 @@ void push_swap(t_list **a, t_list **b)
 		else
 		{
 			get_cost(a, b);
-			push_med(a, b);
 			find_new_med(a);
 		}
 	}
