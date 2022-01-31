@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:25:43 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/31 18:07:10 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:35:43 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ int	check_dub(t_list *list)
 		list = list->next;
 	}
 	return (1);
+}
+
+int	check_num(char *num, int *tab, int *i)
+{
+	if (isnum(num))
+	{
+		tab[(*i) - 1] = ft_atoi(num);
+		(*i)++;
+	}
 }
 
 int	isnum(char	*str)

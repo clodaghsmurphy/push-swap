@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/31 17:02:20 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:22:29 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,10 @@ void command(t_list **a, t_list **b, char *str);
 void command2(t_list **a, t_list **b, char *str);
 
 /*-------------checkargs---------------*/
-int check_dub(t_list *list);
-int isnum(char *str);
-int ft_isdigit(int c);
+int		check_dub(t_list *list);
+int		isnum(char *str);
+int		ft_isdigit(int c);
+int		check_num(char *num, int *tab, int *i);
 
 /*--------------setmoves---------------*/
 int med_pres(t_list **list);
