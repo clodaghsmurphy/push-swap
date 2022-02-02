@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:42:29 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/01 19:26:34 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:14:32 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	insert_sort(t_list **a, t_list **b)
 	}
 	while ((*b))
 	{
+		assign_next_sup(a, b);
 		if ((*a)->value == (*b)->next_sup)
 			push(b, a, 0);
 		else

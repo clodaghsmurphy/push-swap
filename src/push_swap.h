@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/01 19:50:29 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:45:57 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ void		dub_reverse_rotate(t_list **a, t_list **b);
 /*-------------utils.c---------------*/
 int			ft_atoi(const char *str);
 int			ft_isdigit(int c);
-void		printlsts(t_list *a, t_list *b);
+long int	ft_atol(const char *str);
+/*void		printlsts(t_list *a, t_list *b);*/
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		ft_putstr(char *str);
 /*--------------push_swap.c------------*/
@@ -90,11 +91,12 @@ void		print_res(char *res);
 void		command(t_list **a, t_list **b, char *str);
 void		command2(t_list **a, t_list **b, char *str);
 
+/*-------------checkargs2---------------*/
+int			ft_isdigit(int c);
+int			check_sort(t_list **a);
 /*-------------checkargs---------------*/
-long int	ft_atol(const char *str);
 int			check_dub(t_list *list);
 int			isnum(char *str);
-int			ft_isdigit(int c);
 int			check_num(char *num, int *tab, int *i);
 int			is_int(char	*num);
 /*--------------moveto_b---------------*/
@@ -118,7 +120,6 @@ void		find_best_move(t_list **a, t_list **b);
 void		min_to_top(t_list **a);
 void		set_data(t_data *list_data, int *lowest_cost, t_list *temp);
 /*---------------tester-----------------*/
-int			check_sort(t_list **a, t_list **b);
 void		print_index(t_list **list);
 void		take_op(t_list *a, t_list *b);
 

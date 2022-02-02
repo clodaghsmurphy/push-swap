@@ -14,6 +14,7 @@ FILES = ./src/checkargs.c \
 		./src/utils.c \
 		./src/common_move.c \
 		./src/get_cost.c \
+		./src/checkargs2.c \
 
 OBJS = $(FILES: .c=.o)
 

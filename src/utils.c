@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:12:07 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/01 19:42:29 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:50:12 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,6 @@ long int	ft_atol(const char *str)
 	return (sign * res);
 }
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
 /*
 void	printlsts(t_list *a, t_list *b)
 {

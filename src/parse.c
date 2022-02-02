@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:46:39 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/01 19:02:46 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:43:29 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	ft_parse(int *tab, int size)
 		i++;
 	}
 	free(sorted_tab);
-	if (check_dub(a))
+	if (check_dub(a) && !check_sort(&a))
 		push_swap(&a, &b);
 	else
 	{
-		write(1, "no doubles please..\n", 20);
+		ft_putstr("Error\n");
 		ft_lstclear(&a);
 		return ;
 	}
