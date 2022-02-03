@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:28:37 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/01 19:25:20 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:08:24 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	push_swap(t_list **a, t_list **b)
 {
 	if ((*a) == NULL || (*a)->next == NULL)
 		return ;
+	if (lst_size(a) == 3 || lst_size(a) == 5)
+	{
+		special_case(a, b);
+		return ;
+	}
 	while ((*a)->next->next != NULL)
 	{
 		if (med_pres(a))

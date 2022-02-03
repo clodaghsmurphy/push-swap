@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/03 11:41:02 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:08:54 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,10 @@ void		command2(t_list **a, t_list **b, char *str);
 /*-------------checkargs2---------------*/
 int			ft_isdigit(int c);
 int			check_sort(t_list **a);
+int			ft_parse_bis(t_list **a, t_list **b);
+void		special_case(t_list **a, t_list **b);
+void		three_list(t_list **a, t_list **b);
+
 /*-------------checkargs---------------*/
 int			check_dub(t_list *list);
 int			isnum(char *str);
