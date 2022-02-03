@@ -1,50 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tab.c                                              :+:      :+:    :+:   */
+/*   checkargs2_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/23 19:01:06 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/03 12:15:15 by clmurphy         ###   ########.fr       */
+/*   Created: 2022/02/03 12:19:27 by clmurphy          #+#    #+#             */
+/*   Updated: 2022/02/03 12:19:51 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include"checker.h"
 
-int	*tab_cpy(int *tab, int size)
+int	check_sort(t_list **a)
 {
-	int	*new;
-	int	i;
+	t_list	*temp;
 
-	i = 0;
-	new = malloc(sizeof(int) * size);
-	if (!new)
+	temp = *a;
+	if ((*a) == NULL)
 		return (0);
-	while (i < size)
+	while (temp->next != NULL)
 	{
-		new[i] = tab[i];
-		i++;
+		if (temp->value >= temp->next->value)
+			return (0);
+		temp = temp->next;
 	}
-	return (new);
+	return (1);
 }
 
-void	sort_tab(int *tab, int size)
+int	ft_isdigit(int c)
 {
-	int	i;
-	int	swap;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		if (tab[i] > tab[i + 1])
-		{
-			swap = tab[i];
-			tab[i] = tab[i + 1];
-			tab[i + 1] = swap;
-			i = 0;
-		}
-		else
-			i++;
-	}
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

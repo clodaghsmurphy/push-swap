@@ -16,9 +16,24 @@ FILES = ./src/checkargs.c \
 		./src/get_cost.c \
 		./src/checkargs2.c \
 
+BONUS = ./my_checker/checker.c \
+		./my_checker/checkargs_checker.c \
+		./my_checker/checkargs2_checker.c \
+		./my_checker/tab_checker.c \
+		./my_checker/moves_checker.c \
+		./my_checker/list_checker.c \
+		./my_checker/get_next_line.c \
+		./my_checker/dub_moves_checker.c \
+		./my_checker/get_next_line_utils.c \
+		./my_checker/utils_checker.c \
+
+BONUS_OBJS = $(BONUS: .c=.o)
+
 OBJS = $(FILES: .c=.o)
 
 INC = ./src/push_swap.h \
+
+BONUS_NAME = checker
 
 NAME = push_swap
 
@@ -31,14 +46,21 @@ FLAGS = -Wall -Wextra -Werror
 $(NAME): $(OBJ) 
 		$(CC) $(FLAGS) -g $(OBJS) -o $(NAME)
 
+$(BONUS_NAME): $(BONUS_OBJ) 
+		$(CC) $(FLAGS) -g $(BONUS_OBJS) -o $(BONUS_NAME)
+
+
 all: $(NAME)
 
+bonus: $(BONUS_NAME)
 
 clean : 
 	rm -f *.o 
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(BONUS_NAME)
+
 
 re: fclean all
 

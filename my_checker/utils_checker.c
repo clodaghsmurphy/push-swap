@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 13:12:07 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/03 11:42:55 by clmurphy         ###   ########.fr       */
+/*   Created: 2022/02/03 12:18:05 by clmurphy          #+#    #+#             */
+/*   Updated: 2022/02/03 16:23:16 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include"checker.h"
 
 int	ft_atoi(const char *str)
 {
@@ -61,7 +61,7 @@ long int	ft_atol(const char *str)
 	}
 	return (sign * res);
 }
-
+/*
 void	printlsts(t_list *a, t_list *b)
 {
 	t_list	*current_a;
@@ -88,7 +88,7 @@ void	printlsts(t_list *a, t_list *b)
 		printf("       %d\n", current_b->value);
 		current_b = current_b->next;
 	}
-}
+}*/
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -120,4 +120,10 @@ void	ft_putstr(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
+}
+
+void	error(t_list **a, t_list **b)
+{
+	ft_lstclear(a);
+	ft_lstclear(b);
 }

@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:34:03 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/01/17 17:29:27 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/03 12:29:01 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+
+#include"checker.h"
 #define BUFFER_SIZE 42
-static char *next_line(char *save)
+
+static char	*next_line(char *save)
 {
-	unsigned int i;
-	unsigned int j;
-	char *res;
+	unsigned int	i;
+	unsigned int	j;
+	char			*res;
 
 	i = 0;
 	j = 0;
@@ -40,12 +42,12 @@ static char *next_line(char *save)
 	return (free(save), res);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char *save = NULL;
-	char *buf;
-	char *res;
-	int count;
+	static char	*save = NULL;
+	char		*buf;
+	char		*res;
+	int			count;
 
 	count = 1;
 	if (BUFFER_SIZE <= 0 && fd < 0)
@@ -57,7 +59,7 @@ char *get_next_line(int fd)
 	{
 		count = read(fd, buf, BUFFER_SIZE);
 		if (count <= 0)
-			break;
+			break ;
 		buf[count] = '\0';
 		save = ft_strjoin2(save, buf);
 	}
@@ -65,23 +67,3 @@ char *get_next_line(int fd)
 	save = next_line(save);
 	return (free(buf), res);
 }
-/*
-int	main(void)
-{
-	int		fd;
-	char	*str;
-
-	fd = open("big_line_with_nl", O_RDWR);
-	if (fd == -1)
-	{
-		printf("error");
-		return (0);
-	}
-	while ((str = get_next_line(fd)) != NULL)
-	{
-		printf("GNL RESULT : %s\n", str);
-		free(str);
-	}
-	close(fd);
-	return (0);
-}*/

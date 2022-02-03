@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clmurphy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:22:16 by clmurphy          #+#    #+#             */
-/*   Updated: 2021/12/13 17:43:18 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/03 12:27:32 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "checker.h"
 
-char *ft_strdup2(const char *s1)
+char	*ft_strdup2(const char *s1)
 {
-	unsigned int i;
-	char *dup;
+	unsigned int	i;
+	char			*dup;
 
 	if (!s1)
 		return (NULL);
@@ -28,15 +28,15 @@ char *ft_strdup2(const char *s1)
 		dup[i] = s1[i];
 		i++;
 		if (dup[i - 1] == '\n')
-			break;
+			break ;
 	}
 	dup[i] = '\0';
 	return (dup);
 }
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
@@ -44,10 +44,10 @@ size_t ft_strlen(const char *s)
 	return (i);
 }
 
-int ft_strchr(char *str, int c)
+int	ft_strchr(char *str, int c)
 {
-	size_t i;
-	unsigned char ltr;
+	size_t			i;
+	unsigned char	ltr;
 
 	if (!str)
 		return (0);
@@ -62,11 +62,11 @@ int ft_strchr(char *str, int c)
 	return (0);
 }
 
-char *ft_strjoin2(char *str1, char *str2)
+char	*ft_strjoin2(char *str1, char *str2)
 {
-	char *str;
-	unsigned int i;
-	unsigned int j;
+	char			*str;
+	unsigned int	i;
+	unsigned int	j;
 
 	if (!str1)
 		str1 = ft_strdup2("\0");

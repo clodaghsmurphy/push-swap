@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:42:29 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/02 17:14:32 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/03 11:53:14 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	insert_sort(t_list **a, t_list **b)
 		}
 	}
 	min_to_top(a);
+//	printlsts(*a, *b);
 }
 
 void	find_best_move(t_list **a, t_list **b)
@@ -108,7 +109,7 @@ void	min_to_top(t_list **a)
 	while (temp != NULL && temp->value != (*a)->min)
 		temp = temp->next;
 	index = temp->index;
-	if (index < size / 2)
+	if (index <= size / 2)
 	{
 		while ((*a)->value != (*a)->min)
 			rotate(a, 0, 0);

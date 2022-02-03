@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/02 17:45:57 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/03 11:41:02 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		dub_reverse_rotate(t_list **a, t_list **b);
 int			ft_atoi(const char *str);
 int			ft_isdigit(int c);
 long int	ft_atol(const char *str);
-/*void		printlsts(t_list *a, t_list *b);*/
+void		printlsts(t_list *a, t_list *b);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		ft_putstr(char *str);
 /*--------------push_swap.c------------*/
