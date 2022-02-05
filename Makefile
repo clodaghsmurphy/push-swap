@@ -14,7 +14,8 @@ FILES = ./src/checkargs.c \
 		./src/utils.c \
 		./src/common_move.c \
 		./src/get_cost.c \
-		./src/checkargs2.c 
+		./src/special_case.c \
+		./src/checkargs2.c \
 
 BONUS = ./my_checker/checker.c \
 		./my_checker/checkargs_checker.c \
@@ -52,7 +53,7 @@ $(BONUS_NAME): $(BONUS_OBJS)
 		$(CC) $(FLAGS) $(BONUS_OBJS) -g -o $(BONUS_NAME)
 
 clean : 
-	rm -f *.o 
+	rm -f ./src/*.o ./my_checker/*.o 
 
 fclean: clean
 	rm -f $(NAME)

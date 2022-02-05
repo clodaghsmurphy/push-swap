@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:39 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/03 18:11:02 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/04 20:55:06 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 		return (free(tab), 0);
 	while (i < ac)
 	{
-		if (!check_num(av[i], tab, &i))
+		if (ft_strlen(av[i]) == 0 || !check_num(av[i], tab, &i))
 		{	
 			ft_putstr("Error\n");
 			return (free(tab), 0);

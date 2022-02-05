@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:25:43 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/03 18:41:01 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/04 20:07:23 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_dub(t_list *a)
 
 int	check_num(char *num, int *tab, int *i)
 {
-	if (isnum(num) && is_int(num))
+	if (isnum(num) == 1 && is_int(num) == 1)
 	{
 		tab[(*i) - 1] = ft_atoi(num);
 		(*i)++;
@@ -51,7 +51,7 @@ int	check_num(char *num, int *tab, int *i)
 
 int	is_int(char	*num)
 {
-	if (ft_atol(num) >= 2147483647 || ft_atol(num) <= -2147483648)
+	if (ft_atol(num) > 2147483647 || ft_atol(num) < -2147483648)
 		return (-1);
 	else
 		return (1);

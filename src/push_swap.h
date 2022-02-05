@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:55 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/03 19:08:54 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/04 20:53:00 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int			get_next_sup_cost(t_list **list, int value);
 /*------------get_cost--------------*/
 void		get_cost_b(t_list *tp_b, int size_b);
 void		get_cost(t_list **a, t_list **b);
+size_t		ft_strlen(const char *s);
 /*------------index--------------*/
 int			get_index_cost(t_list **list, int index);
 int			get_index(t_list **list, int value);
@@ -97,7 +98,8 @@ int			check_sort(t_list **a);
 int			ft_parse_bis(t_list **a, t_list **b);
 void		special_case(t_list **a, t_list **b);
 void		three_list(t_list **a, t_list **b);
-
+void		five_list(t_list **a, t_list **b);
+void		to_top(t_list **a, t_list **b, int index);
 /*-------------checkargs---------------*/
 int			check_dub(t_list *list);
 int			isnum(char *str);

@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:12:07 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/03 11:42:55 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/04 20:10:44 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ long int	ft_atol(const char *str)
 	}
 	return (sign * res);
 }
-
+/*
 void	printlsts(t_list *a, t_list *b)
 {
 	t_list	*current_a;
@@ -88,7 +88,7 @@ void	printlsts(t_list *a, t_list *b)
 		printf("       %d\n", current_b->value);
 		current_b = current_b->next;
 	}
-}
+}*/
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

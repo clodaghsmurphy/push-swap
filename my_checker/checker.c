@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:12:01 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/03 16:47:50 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/05 15:46:16 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	printres(t_list **a, t_list **b, int i)
 {
 	if (i >= 0)
 	{
-		if (check_sort(a))
+		if (check_sort(a) && lst_size(b) == 0)
 		{
 			ft_putstr("OK\n");
 			error(a, b);
@@ -103,7 +103,7 @@ void	ft_parse(int *tab, int size)
 	}
 	free(sorted_tab);
 	free(tab);
-	if (check_dub(a) && !check_sort(&a))
+	if (check_dub(a))
 		take_op(&a, &b);
 	else
 	{
@@ -125,10 +125,14 @@ int	main(int ac, char **av)
 		return (0);
 	i = 1;
 	if (ac < 2)
+	{
+		if (ac == 2 && av[1][0] == '\0')
+			ft_putstr("Error\n");
 		return (free(tab), 0);
+	}
 	while (i < ac)
 	{
-		if (!check_num(av[i], tab, &i))
+		if (ft_strlen(av[i]) == 0 || !check_num(av[i], tab, &i))
 		{	
 			ft_putstr("Error\n");
 			return (free(tab), 0);
