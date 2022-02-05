@@ -6,7 +6,7 @@
 /*   By: clmurphy <clmurphy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 19:16:32 by clmurphy          #+#    #+#             */
-/*   Updated: 2022/02/04 19:52:37 by clmurphy         ###   ########.fr       */
+/*   Updated: 2022/02/05 17:23:54 by clmurphy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	special_case(t_list **a, t_list **b)
 	{
 		five_list(a, b);
 		three_list(a, b);
-		push(b, a, 1);
-		push(b, a, 1);
+		push(b, a, 0);
+		rotate(a, 0, 0);
+		push(b, a, 0);
 	}	
 }
